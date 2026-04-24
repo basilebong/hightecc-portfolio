@@ -1,0 +1,20 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col {
+  grid-column: var(--col);
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .col {
+    grid-column: var(--col-md);
+  }
+}

@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Merriweather } from "next/font/google";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  style: ["normal", "italic"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Hightecc — Freelance product engineering by Basile Bong",
+  title: "Hightecc · Basile Bong · Softwareentwicklung",
   description:
-    "Hightecc is the independent studio of Basile Bong — shipping modern web products, AI-forward tooling, and custom platforms for ambitious teams.",
+    "Freelance Softwareentwicklung. Outcome-orientiert, klar kommuniziert, pünktlich geliefert.",
 };
 
 export default function RootLayout({
@@ -25,8 +34,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-background text-foreground">{children}</body>
+    <html
+      lang="de"
+      className={`${dmSans.variable} ${merriweather.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>
+        <div className="grid-overlay" aria-hidden />
+        {children}
+      </body>
     </html>
   );
 }

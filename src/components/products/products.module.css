@@ -1,0 +1,246 @@
+.layout {
+  align-items: stretch;
+}
+
+.visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line-2);
+  background: rgba(255, 255, 255, 0.012);
+  overflow: hidden;
+}
+
+.window {
+  position: absolute;
+  inset: 40px 32px 40px 32px;
+  border: 1px solid var(--line-2);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+
+.urlbar {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+  text-align: center;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.winBody {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  min-height: 0;
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sbarRow {
+  height: 6px;
+  background: var(--line-2);
+  border-radius: 1px;
+}
+
+.sbarRowShort {
+  height: 6px;
+  background: var(--line-2);
+  border-radius: 1px;
+  width: 65%;
+}
+
+.canvas {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.headline {
+  height: 14px;
+  width: 55%;
+  background: var(--ink);
+  opacity: 0.85;
+}
+
+.sub {
+  height: 6px;
+  width: 35%;
+  background: var(--line-2);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  flex: 1;
+  min-height: 60px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 0.5px),
+      var(--line) 50%,
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.5px),
+      var(--line) 50%,
+      transparent calc(50% + 0.5px)
+    );
+}
+
+.cardAccent {
+  border: 1px solid var(--primary);
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 0.5px),
+      rgba(255, 107, 53, 0.35) 50%,
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.5px),
+      rgba(255, 107, 53, 0.35) 50%,
+      transparent calc(50% + 0.5px)
+    );
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.line {
+  height: 5px;
+  background: var(--line-2);
+}
+
+.lineShort {
+  height: 5px;
+  background: var(--line-2);
+  width: 60%;
+}
+
+.label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  z-index: 3;
+  background: var(--background);
+  padding: 2px 6px;
+}
+
+.labelTl {
+  top: 10px;
+  left: 14px;
+}
+
+.labelTr {
+  top: 10px;
+  right: 14px;
+}
+
+.labelBl {
+  bottom: 10px;
+  left: 14px;
+}
+
+.labelBr {
+  bottom: 10px;
+  right: 14px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.copy h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+.copy h3 em {
+  color: var(--primary);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.copy p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mute);
+  margin: 0 0 28px;
+  max-width: 520px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+
+.meta > div {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.metaK {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.metaV {
+  font-size: 14px;
+  color: var(--ink);
+}

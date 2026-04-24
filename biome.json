@@ -17,7 +17,6 @@
       "!**/coverage",
       "!**/.turbo",
       "!**/next-env.d.ts",
-      "!**/globals.css",
       "!**/*.md",
       "!**/*.mdx"
     ]
@@ -89,7 +88,8 @@
       "quoteStyle": "double"
     },
     "parser": {
-      "cssModules": true
+      "cssModules": true,
+      "tailwindDirectives": true
     }
   },
   "assist": {

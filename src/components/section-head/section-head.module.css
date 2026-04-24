@@ -1,0 +1,63 @@
+.head {
+  margin-bottom: 80px;
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+}
+
+.num {
+  font-size: 52px;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.name {
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 900px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary);
+}
+
+.lede {
+  margin: 20px 0 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--mute);
+  max-width: 620px;
+}
+
+@media (max-width: 720px) {
+  .head {
+    margin-bottom: 48px;
+  }
+
+  .num {
+    font-size: 36px;
+  }
+}

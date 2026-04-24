@@ -1,0 +1,36 @@
+.footer {
+  padding: 32px 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mute);
+  text-transform: uppercase;
+}
+
+.footer a {
+  color: var(--mute);
+}
+
+.footer a:hover {
+  color: var(--ink);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wm {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0;
+  color: var(--primary);
+  text-transform: none;
+}
