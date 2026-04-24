@@ -12,7 +12,7 @@ export function SiteHeader() {
       <Container>
         <Row>
           <Col span={3}>
-            <Link href="#" className={styles.brand}>
+            <Link href="/" className={styles.brand}>
               Hightecc<sup>01</sup>
             </Link>
           </Col>
@@ -27,7 +27,7 @@ export function SiteHeader() {
           </Col>
           <Col span={3} className={styles.cta}>
             <Button asChild variant="outline">
-              <Link href="#contact">Let&apos;s talk →</Link>
+              <Link href="/#contact">Let&apos;s talk →</Link>
             </Button>
           </Col>
         </Row>

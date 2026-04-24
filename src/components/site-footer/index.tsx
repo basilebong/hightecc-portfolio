@@ -10,7 +10,7 @@ export function SiteFooter() {
         <span>· Basile Bong · Köln, DE</span>
       </div>
       <div>
-        © 2026 · <Link href="#">Impressum</Link> · <Link href="#">Datenschutz</Link>
+        © 2026 · <Link href="/impressum">Impressum</Link> · <Link href="#">Datenschutz</Link>
       </div>
       <div>v2026.1 · Built with care</div>
     </footer>
