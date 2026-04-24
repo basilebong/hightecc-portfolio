@@ -1,3 +1,15 @@
-ignoredBuiltDependencies:
+ignoredBuiltDependencies: []
+
+onlyBuiltDependencies:
+  - "@biomejs/biome"
+  - lefthook
   - sharp
   - unrs-resolver
+
+auditConfig:
+  ignoreCves: []
+
+minimumReleaseAge: 1440
+peerDependencyRules:
+  allowAny: []
+  allowedVersions: {}
