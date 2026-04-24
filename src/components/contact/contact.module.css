@@ -60,13 +60,13 @@
 }
 
 .row:hover {
-  padding-left: 12px;
+  padding-left: 28px;
 }
 
 .row::before {
   content: "→";
   position: absolute;
-  left: -4px;
+  left: 0;
   opacity: 0;
   color: var(--primary);
   transition:
@@ -76,7 +76,7 @@
 
 .row:hover::before {
   opacity: 1;
-  left: 0;
+  left: 4px;
 }
 
 .rowK {

@@ -21,7 +21,7 @@ export function Contact() {
               <a className={styles.row} href={`mailto:${site.owner.email}`}>
                 <span className={styles.rowK}>01 · Mail</span>
                 <span className={styles.rowV}>{site.owner.email}</span>
-                <span className={styles.rowM}>schnellste Antwort</span>
+                <span className={styles.rowM}>Schnellste Antwort</span>
               </a>
               <a
                 className={styles.row}
@@ -31,7 +31,7 @@ export function Contact() {
               >
                 <span className={styles.rowK}>02 · LinkedIn</span>
                 <span className={styles.rowV}>/in/basilebong</span>
-                <span className={styles.rowM}>DM ok</span>
+                <span className={styles.rowM}>Vernetzen &amp; schreiben</span>
               </a>
             </div>
           </Col>

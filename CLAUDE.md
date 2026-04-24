@@ -33,3 +33,21 @@ All content aligns to a 12-column grid via `Container`, `Row`, and `Col` from `@
 # Adding a section
 
 Create the component directory, use `<SectionHead>` for the heading, lay the body out with `<Container><Row><Col span={…} md={…}>…`, reach for shadcn primitives with their default variants, wire the component into `src/app/page.tsx`, and run `pnpm check && pnpm typecheck && pnpm build`.
+
+# Commit messages
+
+Conventional Commits are enforced by commitlint via a Lefthook `commit-msg` hook (see `commitlint.config.ts`). Pick the type that actually matches the change — `feat:` is not the default.
+
+- `feat:` — new user-facing functionality
+- `fix:` — bug fix
+- `refactor:` — code restructure with no behavior change
+- `style:` — formatting, whitespace, CSS-only tweaks with no logic change
+- `perf:` — performance improvement
+- `docs:` — documentation only (README, CLAUDE.md, AGENTS.md, comments)
+- `test:` — adding or updating tests
+- `build:` — build system, dependencies, tooling configs that ship in the build
+- `ci:` — CI config and scripts
+- `chore:` — repo housekeeping that doesn't fit above (e.g. lint config, editor config)
+- `revert:` — reverts a previous commit
+
+Subject is lower-case, no trailing period. Body lines wrap at 100 characters.

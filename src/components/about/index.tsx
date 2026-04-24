@@ -25,18 +25,10 @@ export function About() {
               <em>Alles, was man bauen kann, interessiert mich.</em>{" "}
               <span className={styles.ledeMuted}>
                 Web, Mobile, Automatisierungen, KI-Features. Ich liebe es, Ideen in etwas Greifbares
-                zu verwandeln. Und fast genauso sehr mag ich die Seite, die viele Entwickler·innen
-                übersehen: Business, Sales, die Frage, ob das Produkt am Ende wirklich bei Menschen
-                ankommt. Denn ein Produkt bauen ist das eine. Ziele damit erreichen das andere.
+                zu verwandeln. Und fast genauso sehr mag ich die andere Seite: Business, Sales, die
+                Frage, ob das Produkt am Ende wirklich bei Menschen ankommt. Denn ein Produkt bauen
+                ist das eine. Ziele damit erreichen das andere.
               </span>
-            </p>
-
-            <p className={styles.body}>
-              Was mich antreibt: Tech ist nie zu Ende. Sie entwickelt sich weiter, sie steht an
-              vorderster Front von Veränderungen, die unsere Gesellschaft formen. Ich bin
-              überzeugter AI-Believer, Automation-Fan, und glaube daran, dass gute Software Leben
-              spürbar besser macht. Nicht in Pitch-Deck-Sprache, sondern konkret: weniger Reibung,
-              weniger Warten, mehr Möglichkeiten.
             </p>
           </Col>
 
@@ -44,9 +36,7 @@ export function About() {
             <aside className={styles.credo}>
               <div className={styles.credoRow}>
                 <div className={styles.credoK}>Credo</div>
-                <div className={styles.credoV}>
-                  Produkt bauen &amp; Ziele erreichen gehören zusammen.
-                </div>
+                <div className={styles.credoV}>Annahmen sind teuer. Feedback nicht.</div>
               </div>
               <div className={styles.credoRow}>
                 <div className={styles.credoK}>Liebt</div>
@@ -63,6 +53,14 @@ export function About() {
                 <div className={styles.credoV}>Deutsch · Français · English</div>
               </div>
             </aside>
+
+            <p className={styles.body}>
+              Was mich antreibt: Tech ist nie zu Ende. Sie entwickelt sich weiter, sie steht an
+              vorderster Front von Veränderungen, die unsere Gesellschaft formen. Ich bin
+              überzeugter AI-Believer, Automation-Fan, und glaube daran, dass gute Software Leben
+              spürbar besser macht. Nicht in Pitch-Deck-Sprache, sondern konkret: weniger Reibung,
+              weniger Warten, mehr Möglichkeiten.
+            </p>
           </Col>
         </Row>
       </Container>

@@ -15,7 +15,7 @@ const caps = [
     index: "→ B",
     title: "Mobile Apps",
     desc: "Cross-Platform (iOS / Android) mit einer Codebase. Schnell am Markt, wartbar im Alltag.",
-    tags: ["React Native", "Expo", "Swift-Bridge"],
+    tags: ["React Native", "Expo", "Flutter"],
   },
   {
     index: "→ C",
@@ -25,9 +25,9 @@ const caps = [
   },
   {
     index: "→ D",
-    title: "Tech-Strategie & Sparring",
-    desc: "Architektur-Reviews, Hiring-Beratung, Roadmap-Sparring. Für Gründer·innen ohne CTO an Bord.",
-    tags: ["Architecture", "Hiring", "Roadmap"],
+    title: "Tech-Beratung & Automation",
+    desc: "Internes Tooling unter die Lupe nehmen, Engpässe finden, Automationen vorschlagen. Damit Dein Team weniger klickt und mehr ausliefert.",
+    tags: ["Tooling-Audit", "Automation", "Workflows", "Integrations"],
   },
 ];
 
