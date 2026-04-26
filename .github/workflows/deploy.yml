@@ -26,6 +26,18 @@ jobs:
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm check
       - run: pnpm typecheck
+      - name: Forbid NEXT_PUBLIC_ outside src/lib/env.ts
+        run: |
+          set -e
+          matches=$(grep -rEn 'NEXT_PUBLIC_[A-Z0-9_]+' \
+            --include='*.ts' --include='*.tsx' --include='*.js' --include='*.mjs' \
+            src next.config.ts 2>/dev/null \
+            | grep -v '^src/lib/env\.ts:' || true)
+          if [ -n "$matches" ]; then
+            echo "::error::NEXT_PUBLIC_* must only be referenced in src/lib/env.ts. Found:"
+            echo "$matches"
+            exit 1
+          fi
 
   build:
     needs: quality

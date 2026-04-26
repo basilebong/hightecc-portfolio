@@ -8,6 +8,15 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx}"
       run: pnpm exec tsc --noEmit
+    next-public-guard:
+      glob: "*.{js,jsx,ts,tsx,mjs}"
+      run: |
+        bad=$(grep -lE 'NEXT_PUBLIC_[A-Z0-9_]+' {staged_files} 2>/dev/null | grep -v '^src/lib/env\.ts$' || true)
+        if [ -n "$bad" ]; then
+          echo "NEXT_PUBLIC_* must only be referenced in src/lib/env.ts. Offending files:"
+          echo "$bad"
+          exit 1
+        fi
 
 commit-msg:
   commands:
