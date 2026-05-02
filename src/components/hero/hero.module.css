@@ -4,6 +4,11 @@
   padding: 92px 28px 48px;
   overflow: hidden;
   isolation: isolate;
+  --blob-a: #ffffff;
+  --blob-b: #c8c8c8;
+  --blob-c: #909090;
+  --primary: #ffffff;
+  --primary-foreground: #0a0a09;
 }
 
 .blobs {
