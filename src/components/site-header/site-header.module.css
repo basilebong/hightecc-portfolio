@@ -10,6 +10,11 @@
   -webkit-backdrop-filter: blur(6px);
 }
 
+.brandCol {
+  display: flex;
+  align-items: center;
+}
+
 .linksCol {
   display: flex;
   align-items: center;
@@ -22,21 +27,11 @@
   justify-content: flex-end;
 }
 
-.brand {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--primary);
-  letter-spacing: -0.01em;
-}
-
-.brand sup {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--mute);
-  margin-left: 6px;
-  letter-spacing: 0.1em;
-  vertical-align: 8px;
+.logo {
+  display: block;
+  height: 30px;
+  width: auto;
+  color: #fff;
 }
 
 .links {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LogoWordmark } from "@/components/logo-wordmark";
 import { Button } from "@/components/ui/button";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { site } from "@/lib/site";
@@ -11,9 +12,9 @@ export function SiteHeader() {
     <nav className={styles.nav}>
       <Container>
         <Row>
-          <Col span={3}>
-            <Link href="/" className={styles.brand}>
-              Hightecc<sup>01</sup>
+          <Col span={3} className={styles.brandCol}>
+            <Link href="/" aria-label={site.name}>
+              <LogoWordmark className={styles.logo} />
             </Link>
           </Col>
           <Col span={6} className={styles.linksCol}>

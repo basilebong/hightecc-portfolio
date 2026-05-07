@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { LogoWordmark } from "@/components/logo-wordmark";
+
 import styles from "./site-footer.module.css";
 
 export function SiteFooter() {
@@ -11,7 +13,7 @@ export function SiteFooter() {
         </p>
         <div className={styles.row}>
           <div className={styles.brand}>
-            <span className={styles.wm}>Hightecc</span>
+            <LogoWordmark className={styles.wm} />
             <span>· Basile Bong · Köln, DE</span>
           </div>
           <div>
