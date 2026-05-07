@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
-  padding-right: 48px;
 }
 
 .block {
@@ -44,10 +43,4 @@
 
 .block dd a:hover {
   color: var(--accent);
-}
-
-@media (max-width: 720px) {
-  .body {
-    padding-right: 0;
-  }
 }
