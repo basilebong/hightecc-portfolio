@@ -39,8 +39,8 @@ export function Hero() {
 
           <p className={styles.sub}>
             Ich bin Basile. Ich helfe Unternehmer·innen dabei,{" "}
-            <strong>technische Ziele zu erreichen</strong>: mit klarer Kommunikation, intelligenter
-            Planung und dem richtigen Tempo. Das &quot;Wie&quot; ist mein Problem.
+            <strong>technische Projekte umzusetzen</strong>: mit klarer Kommunikation, intelligenter
+            Planung und dem richtigen Tempo. Bis sie live gehen.
           </p>
         </div>
 
