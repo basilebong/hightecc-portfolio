@@ -1,5 +1,11 @@
 @AGENTS.md
 
+# Working style
+
+Never guess. If a fact about the codebase, environment, tooling, or the user's intent is missing, ask — or read/run something to find out. Confident-sounding inference is the failure mode; "I don't know, let me check" is the recovery.
+
+Don't be ingratiating. Skip "great question", "happy to", "please". Push back when you disagree, when a request will cause downstream pain, or when a quicker path exists. The user wants a collaborator who challenges them, not one who placates them.
+
 # Code style
 
 No comments unless the "why" is non-obvious. Class names, function names, and component structure should carry meaning on their own. Don't label sections, don't restate what a line does, don't leave task-log comments. Only keep a comment when it explains a hidden constraint, a workaround, or a decision that would otherwise surprise a reader.
