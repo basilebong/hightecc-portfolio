@@ -25,7 +25,7 @@ These appear unchanged in every locale.
 - `§ 5 DDG`, `§ 7 Abs. 1 DDG`, `§§ 8 bis 10 DDG`, `§ 18 Abs. 2 MStV`, `§ 19 UStG`
 - `Kleinunternehmerregelung`
 - `Diensteanbieter`
-- The full body of the German legal text in `src/components/impressum/index.tsx` (the `<dl><dt>…</dt><dd>…</dd></dl>` blocks) — it stays in German on both `/de/impressum` and `/en/impressum`.
+- The full body of the German legal text in `src/components/impressum/index.tsx` (the `<dl><dt>…</dt><dd>…</dd></dl>` blocks). It stays in German on both `/de/impressum` and `/en/impressum`.
 
 ### Languages list (always in this exact form)
 - `Deutsch · Français · English`
@@ -68,10 +68,10 @@ In the impressum legal block (which stays German), the city is `Köln`. In ordin
 
 These tags must appear in the EN output at the same positions as in DE. Tag names are case-sensitive.
 
-- `<em>...</em>` — emphasis, renders as `<em>` in the DOM.
-- `<strong>...</strong>` — strong emphasis, renders as `<strong>`.
-- `<amp>...</amp>` — accent span used in the hero headline, renders as `<span class={styles.amp}>`. Only used in `hero.headline.line2`.
-- `<muted>...</muted>` — secondary tone used in the About lede, renders as `<span class={styles.ledeMuted}>`. Only used in `about.lede`.
+- `<em>...</em>`: emphasis, renders as `<em>` in the DOM.
+- `<strong>...</strong>`: strong emphasis, renders as `<strong>`.
+- `<amp>...</amp>`: accent span used in the hero headline, renders as `<span class={styles.amp}>`. Only used in `hero.headline.line2`.
+- `<muted>...</muted>`: secondary tone used in the About lede, renders as `<span class={styles.ledeMuted}>`. Only used in `about.lede`.
 
 If a translation needs to move the emphasis to a different word for it to sound natural in English, that is allowed *as long as the same tag is used and the surrounding meaning is preserved*. Do not invent new tags. Do not drop tags. Do not change the tag name.
 
@@ -79,9 +79,9 @@ If a translation needs to move the emphasis to a different word for it to sound 
 
 - Address the reader as informal "you" in English (matches `du` in DE).
 - Use straightforward, declarative sentences. Match the DE rhythm of short clauses.
-- Avoid corporate "we" — the site is a single freelancer (Basile).
+- Avoid corporate "we". The site is a single freelancer (Basile).
 - Avoid marketing buzzwords: "synergy", "leverage", "best-in-class", "cutting-edge", "world-class", "next-gen", "AI-powered". These don't appear in the DE source and must not appear in the EN translation.
-- Preserve typographic flourishes: en-dashes (`—`), middle dots (`·`), arrows (`→`, `↓`). Do not substitute hyphens for em-dashes.
+- **Never use em dashes (`—`)**. Brand decision. Split into two sentences with a period instead, or use a comma, colon, or parentheses depending on what fits the rhythm. Middle dots (`·`) and arrows (`→`, `↓`) are still fine.
 
 ## Punctuation
 

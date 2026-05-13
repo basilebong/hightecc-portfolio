@@ -44,7 +44,7 @@ const messages: MessageShape = {
   },
   about: {
     section: {
-      name: "— About",
+      name: "About",
       kicker: "Hey, I'm Basile",
       title: "Tech is never boring. <em>That's exactly why</em> I'm here.",
     },
@@ -59,17 +59,17 @@ const messages: MessageShape = {
       languagesK: "Languages",
       languagesV: "Deutsch · Français · English",
     },
-    body: "What drives me: tech is never finished. It keeps evolving, sitting at the front line of changes that shape our society. I'm a convinced AI believer, an automation fan, and I believe good software makes life tangibly better. Not in pitch-deck speak — concretely: less friction, less waiting, more possibilities.",
+    body: "What drives me: tech is never finished. It keeps evolving, sitting at the front line of changes that shape our society. I'm a convinced AI believer, an automation fan, and I believe good software makes life tangibly better. Not in pitch-deck speak. Concretely: less friction, less waiting, more possibilities.",
   },
   pillars: {
     section: {
-      name: "— Approach",
+      name: "Approach",
       kicker: "Three principles",
       title: "What you book me for <em>(and not just for code).</em>",
       lede: 'The real value rarely lives in the code alone. Here\'s what makes the difference between „project running" and „project failing".',
     },
     one: {
-      num: "— 01",
+      num: "01",
       title: "Communication <em>that leaves no guesswork.</em>",
       body: "Clear and open, no jargon to impress. I'd rather ask again until I've understood what really matters to you. Communication as a tool, not an afterthought.",
       li1: "Listen before proposing",
@@ -77,7 +77,7 @@ const messages: MessageShape = {
       li3: "Ask when something's unclear",
     },
     two: {
-      num: "— 02",
+      num: "02",
       title: "Cut down to <em>the essentials.</em>",
       body: "I break large initiatives into release-ready slices. Something real is running after a few weeks, not months. Budgets don't tip over in the dark, and every decision is confirmed by real feedback, not assumptions.",
       li1: "MVP with a clear core",
@@ -85,9 +85,9 @@ const messages: MessageShape = {
       li3: "Iteration, not Big Bang",
     },
     three: {
-      num: "— 03",
+      num: "03",
       title: "Planning with a <em>business head.</em>",
-      body: "I don't just think in code and tech stack — I think in milestones, budgets, and hypotheses. Every week of work should answer a question for your business, not just close a ticket.",
+      body: "I don't just think in code and tech stack. I think in milestones, budgets, and hypotheses. Every week of work should answer a question for your business, not just close a ticket.",
       li1: "ROI-driven backlog",
       li2: "Release plans that hold",
       li3: "Critical paths first",
@@ -95,7 +95,7 @@ const messages: MessageShape = {
   },
   capabilities: {
     section: {
-      name: "— What",
+      name: "What",
       kicker: "If you're curious",
       title: "Where I usually <em>operate.</em>",
       lede: "Short, because it shouldn't be the focus: these are the areas I go deep in. Choose by problem, not by tool.",
@@ -121,7 +121,7 @@ const messages: MessageShape = {
   },
   products: {
     section: {
-      name: "— Own products",
+      name: "Own products",
       kicker: "In progress",
       title: "On the side, I'm building <em>something of my own.</em>",
     },
@@ -155,12 +155,12 @@ const messages: MessageShape = {
   },
   impressum: {
     section: {
-      name: "— Legal notice",
+      name: "Legal notice",
       kicker: "Information pursuant to § 5 DDG",
       title: "Who's behind <em>Hightecc</em>.",
     },
     preface:
-      "Legal notice required by German law — the original German text follows below and is the legally binding version.",
+      "Legal notice required by German law. The original German text follows below and is the legally binding version.",
   },
   footer: {
     pitch: "No cookies. No tracking. No banners. Just the page you asked for.",

@@ -29,6 +29,7 @@ The German source never uses these and the English translation must not introduc
 - `journey` (when describing a project or user flow)
 - `solutioning`, `ideating`
 - Generic exclamations: "Let's go!", "Awesome!", emoji of any kind
+- **Em dashes (`—`)**. Brand decision: never. Split into two sentences, or use a comma, colon, or parentheses. Flag every occurrence.
 
 ## Discouraged patterns
 
@@ -36,7 +37,7 @@ These aren't outright banned but should be rare. If they appear more than once a
 
 - Adverbs ending in `-ly` modifying a verb the reader didn't ask for ("rapidly deliver", "intuitively designed").
 - Vague comparators ("better", "faster", "smarter") without a concrete reference point.
-- "Let me / I'd love to / I'd be happy to" — the DE source is more direct than that.
+- "Let me / I'd love to / I'd be happy to". The DE source is more direct than that.
 - "Just" as a softener ("just a few weeks", "just clicks").
 
 ## Positively encouraged
@@ -50,7 +51,7 @@ The English should read like the German *feels*: brisk, honest, slightly underst
 
 ## Scope
 
-You review tone and brand fit. You do not flag grammar (linguist), tag placement (technical), or DNT terms (technical). If a forbidden word *is* the DNT translation, it's allowed — DNT wins.
+You review tone and brand fit. You do not flag grammar (linguist), tag placement (technical), or DNT terms (technical). If a forbidden word *is* the DNT translation, it's allowed. DNT wins.
 
 ## Output format
 
@@ -72,4 +73,4 @@ If the draft is on-voice, return `[]`. No prose.
 
 ## Tie-break
 
-When you're unsure whether something is "too marketing" — read the German out loud, then read the English out loud, and ask whether they feel like the same person speaking. If not, flag it.
+When you're unsure whether something is "too marketing", read the German out loud, then read the English out loud, and ask whether they feel like the same person speaking. If not, flag it.

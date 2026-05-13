@@ -42,7 +42,7 @@ const messages = {
   },
   about: {
     section: {
-      name: "— Über",
+      name: "Über",
       kicker: "Hey, ich bin Basile",
       title: "Tech ist nie langweilig. <em>Genau deshalb</em> bin ich dabei.",
     },
@@ -61,13 +61,13 @@ const messages = {
   },
   pillars: {
     section: {
-      name: "— Arbeitsweise",
+      name: "Arbeitsweise",
       kicker: "Drei Prinzipien",
       title: "Wofür Du mich buchst <em>(und nicht nur für Code).</em>",
       lede: 'Der eigentliche Wert liegt selten im Code allein. Hier ist, was den Unterschied zwischen „Projekt läuft" und „Projekt kippt" macht.',
     },
     one: {
-      num: "— 01",
+      num: "01",
       title: "Kommunikation, <em>die nicht rätseln lässt.</em>",
       body: "Klar und offen, ohne Fach-Jargon zum Beeindrucken. Ich frage lieber nach, bis ich verstanden habe, was Dir wirklich wichtig ist. Kommunikation als Tool, nicht als Nebensache.",
       li1: "Zuhören vor Vorschlagen",
@@ -75,7 +75,7 @@ const messages = {
       li3: "Fragen, wenn's unklar ist",
     },
     two: {
-      num: "— 02",
+      num: "02",
       title: "Auf's <em>Essenzielle</em> runterbrechen.",
       body: "Ich zerlege große Vorhaben in Release-fähige Stücke. Schon nach wenigen Wochen läuft etwas Echtes, nicht erst nach Monaten. So kippt kein Budget im Dunkeln, und jede Entscheidung wird durch echtes Feedback bestätigt, nicht durch Annahmen.",
       li1: "MVP mit klarem Kern",
@@ -83,7 +83,7 @@ const messages = {
       li3: "Iteration statt Big-Bang",
     },
     three: {
-      num: "— 03",
+      num: "03",
       title: "Planung mit <em>Business-Kopf.</em>",
       body: "Ich denke nicht nur in Code und Tech-Stack, sondern in Meilensteinen, Budgets und Hypothesen. Jede Woche Arbeit soll eine Frage Deines Business beantworten, nicht nur ein Ticket schließen.",
       li1: "ROI-getriebener Backlog",
@@ -93,7 +93,7 @@ const messages = {
   },
   capabilities: {
     section: {
-      name: "— Was",
+      name: "Was",
       kicker: "Wenn's Dich interessiert",
       title: "Womit ich meistens <em>unterwegs bin.</em>",
       lede: "Kurz, weil's nicht im Zentrum stehen sollte: Das sind die Bereiche, in denen ich tief unterwegs bin. Wähle nach Problem, nicht nach Tool.",
@@ -119,7 +119,7 @@ const messages = {
   },
   products: {
     section: {
-      name: "— Eigene Produkte",
+      name: "Eigene Produkte",
       kicker: "In Arbeit",
       title: "Nebenher baue ich etwas <em>eigenes.</em>",
     },
@@ -153,7 +153,7 @@ const messages = {
   },
   impressum: {
     section: {
-      name: "— Impressum",
+      name: "Impressum",
       kicker: "Angaben gemäß § 5 DDG",
       title: "Wer hinter <em>Hightecc</em> steht.",
     },
