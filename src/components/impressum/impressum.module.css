@@ -4,6 +4,16 @@
   gap: 28px;
 }
 
+.preface {
+  margin: 0 0 8px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--mute);
+}
+
 .block {
   display: grid;
   grid-template-columns: 1fr;

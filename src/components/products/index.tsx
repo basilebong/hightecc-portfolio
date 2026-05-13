@@ -1,20 +1,22 @@
+import { getTranslations } from "next-intl/server";
+
 import { Col, Container, Row } from "@/components/ui/grid";
 
 import { SectionHead } from "../section-head";
 import styles from "./products.module.css";
 
-export function Products() {
+export async function Products() {
+  const t = await getTranslations("products");
+
   return (
     <section>
       <SectionHead
         num="04"
-        name="— Eigene Produkte"
-        kicker="In Arbeit"
-        title={
-          <>
-            Nebenher baue ich etwas <em>eigenes.</em>
-          </>
-        }
+        name={t("section.name")}
+        kicker={t("section.kicker")}
+        title={t.rich("section.title", {
+          em: (chunks) => <em>{chunks}</em>,
+        })}
       />
 
       <Container>
@@ -28,7 +30,7 @@ export function Products() {
                     <span />
                     <span />
                   </div>
-                  <div className={styles.urlbar}>untitled-project · /app</div>
+                  <div className={styles.urlbar}>{t("labels.url")}</div>
                 </div>
                 <div className={styles.winBody}>
                   <div className={styles.sidebar}>
@@ -54,38 +56,37 @@ export function Products() {
                   </div>
                 </div>
               </div>
-              <span className={`${styles.label} ${styles.labelTl}`}>Fig. 04</span>
-              <span className={`${styles.label} ${styles.labelTr}`}>Untitled · 2026</span>
-              <span className={`${styles.label} ${styles.labelBl}`}>Wireframe v0.1</span>
-              <span className={`${styles.label} ${styles.labelBr}`}>not-final</span>
+              <span className={`${styles.label} ${styles.labelTl}`}>{t("labels.tl")}</span>
+              <span className={`${styles.label} ${styles.labelTr}`}>{t("labels.tr")}</span>
+              <span className={`${styles.label} ${styles.labelBl}`}>{t("labels.bl")}</span>
+              <span className={`${styles.label} ${styles.labelBr}`}>{t("labels.br")}</span>
             </div>
           </Col>
 
           <Col span={12} md={6} mdStart={7}>
             <div className={styles.copy}>
               <h3>
-                Noch ohne Namen. <em>Mit klarer Richtung.</em>
+                {t.rich("heading", {
+                  em: (chunks) => <em>{chunks}</em>,
+                })}
               </h3>
-              <p>
-                Zwischen Kund·innen-Projekten baue ich an etwas Eigenem. Mehr dazu, sobald&apos;s so
-                weit ist. Du baust auch was? Lass uns sparren.
-              </p>
+              <p>{t("body")}</p>
               <div className={styles.meta}>
                 <div>
-                  <div className={styles.metaK}>Status</div>
-                  <div className={styles.metaV}>Prototyp · Research</div>
+                  <div className={styles.metaK}>{t("meta.statusK")}</div>
+                  <div className={styles.metaV}>{t("meta.statusV")}</div>
                 </div>
                 <div>
-                  <div className={styles.metaK}>Launch</div>
-                  <div className={styles.metaV}>TBD · 2026</div>
+                  <div className={styles.metaK}>{t("meta.launchK")}</div>
+                  <div className={styles.metaV}>{t("meta.launchV")}</div>
                 </div>
                 <div>
-                  <div className={styles.metaK}>Modus</div>
-                  <div className={styles.metaV}>Bootstrap · Solo</div>
+                  <div className={styles.metaK}>{t("meta.modeK")}</div>
+                  <div className={styles.metaV}>{t("meta.modeV")}</div>
                 </div>
                 <div>
-                  <div className={styles.metaK}>Updates</div>
-                  <div className={styles.metaV}>Per Mail auf Anfrage</div>
+                  <div className={styles.metaK}>{t("meta.updatesK")}</div>
+                  <div className={styles.metaV}>{t("meta.updatesV")}</div>
                 </div>
               </div>
             </div>

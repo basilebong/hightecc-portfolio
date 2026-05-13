@@ -8,6 +8,9 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx}"
       run: pnpm exec tsc --noEmit
+    i18n-check:
+      glob: "src/**/*.{ts,tsx}"
+      run: pnpm i18n:check
     next-public-guard:
       glob: "*.{js,jsx,ts,tsx,mjs}"
       run: |

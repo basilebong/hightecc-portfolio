@@ -1,25 +1,30 @@
+import { getTranslations } from "next-intl/server";
+
 import { Col, Container, Row } from "@/components/ui/grid";
 
 import { SectionHead } from "../section-head";
 import styles from "./impressum.module.css";
 
-export function Impressum() {
+export async function Impressum() {
+  const t = await getTranslations("impressum");
+  const preface = t("preface");
+
   return (
     <section id="impressum">
       <SectionHead
         num="05"
-        name="— Impressum"
-        kicker="Angaben gemäß § 5 DDG"
-        title={
-          <>
-            Wer hinter <em>Hightecc</em> steht.
-          </>
-        }
+        name={t("section.name")}
+        kicker={t("section.kicker")}
+        title={t.rich("section.title", {
+          em: (chunks) => <em>{chunks}</em>,
+        })}
       />
 
       <Container>
         <Row rowGap={48}>
           <Col span={12} md={8} className={styles.body}>
+            {preface ? <p className={styles.preface}>{preface}</p> : null}
+
             <dl className={styles.block}>
               <dt>Diensteanbieter</dt>
               <dd>

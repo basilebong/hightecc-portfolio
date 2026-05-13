@@ -1,63 +1,41 @@
+import { getTranslations } from "next-intl/server";
+
 import { Badge } from "@/components/ui/badge";
 import { Col, Container, Row } from "@/components/ui/grid";
+import { capabilityIndex, capabilityTags } from "@/lib/tech";
 
 import { SectionHead } from "../section-head";
 import styles from "./capabilities.module.css";
 
-const caps = [
-  {
-    index: "→ A",
-    title: "Web & APIs",
-    desc: "Produktfertige Web-Apps und saubere Backends. Von MVP bis skalierbare Enterprise-Lösung.",
-    tags: ["Python", "Django", "TypeScript", "React", "Postgres"],
-  },
-  {
-    index: "→ B",
-    title: "Mobile Apps",
-    desc: "Cross-Platform (iOS / Android) mit einer Codebase. Schnell am Markt, wartbar im Alltag.",
-    tags: ["React Native", "Expo", "Flutter"],
-  },
-  {
-    index: "→ C",
-    title: "KI-Integration",
-    desc: "LLM-Features, die im Produkt funktionieren. Inkl. Monitoring, Guardrails und ehrlicher Evaluierung.",
-    tags: ["Claude", "OpenAI", "RAG", "Eval", "Tracing"],
-  },
-  {
-    index: "→ D",
-    title: "Tech-Beratung & Automation",
-    desc: "Internes Tooling unter die Lupe nehmen, Engpässe finden, Automationen vorschlagen. Damit Dein Team weniger klickt und mehr ausliefert.",
-    tags: ["Tooling-Audit", "Automation", "Workflows", "Integrations"],
-  },
-];
+const keys = ["a", "b", "c", "d"] as const;
 
-export function Capabilities() {
+export async function Capabilities() {
+  const t = await getTranslations("capabilities");
+
   return (
     <section id="what">
       <SectionHead
         num="03"
-        name="— Was"
-        kicker="Wenn's Dich interessiert"
-        title={
-          <>
-            Womit ich meistens <em>unterwegs bin.</em>
-          </>
-        }
-        lede="Kurz, weil's nicht im Zentrum stehen sollte: Das sind die Bereiche, in denen ich tief unterwegs bin. Wähle nach Problem, nicht nach Tool."
+        name={t("section.name")}
+        kicker={t("section.kicker")}
+        title={t.rich("section.title", {
+          em: (chunks) => <em>{chunks}</em>,
+        })}
+        lede={t("section.lede")}
       />
 
       <Container>
         <Row className={styles.grid}>
-          {caps.map((c) => (
-            <Col key={c.title} span={12} md={6} className={styles.cap}>
-              <div className={styles.index}>{c.index}</div>
+          {keys.map((k) => (
+            <Col key={k} span={12} md={6} className={styles.cap}>
+              <div className={styles.index}>{capabilityIndex[k]}</div>
               <div className={styles.main}>
-                <h3 className={styles.title}>{c.title}</h3>
-                <p className={styles.desc}>{c.desc}</p>
+                <h3 className={styles.title}>{t(`${k}.title`)}</h3>
+                <p className={styles.desc}>{t(`${k}.desc`)}</p>
                 <div className={styles.tags}>
-                  {c.tags.map((t) => (
-                    <Badge key={t} variant="outline">
-                      {t}
+                  {capabilityTags[k].map((tag) => (
+                    <Badge key={tag} variant="outline">
+                      {tag}
                     </Badge>
                   ))}
                 </div>
@@ -67,9 +45,10 @@ export function Capabilities() {
         </Row>
 
         <div className={styles.note}>
-          <span className={styles.noteTag}>NOTE</span> &nbsp;·&nbsp; Andere Stacks?{" "}
-          <strong>Fragen lohnt sich.</strong> Das richtige Werkzeug entscheidet sich am Problem,
-          nicht am Lebenslauf.
+          <span className={styles.noteTag}>{t("noteTag")}</span> &nbsp;·&nbsp;{" "}
+          {t.rich("note", {
+            strong: (chunks) => <strong>{chunks}</strong>,
+          })}
         </div>
       </Container>
     </section>
