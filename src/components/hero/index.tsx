@@ -31,9 +31,9 @@ export function Hero() {
 
         <div className={styles.center}>
           <h1 className={styles.display}>
-            <span className={styles.line1}>Das Wie</span>
+            <span className={styles.line1}>Ideen,</span>
             <span className={styles.line2}>
-              <span className={styles.amp}>ist mein</span> Problem
+              die <span className={styles.amp}>live</span> gehen.
             </span>
           </h1>
 
