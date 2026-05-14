@@ -158,13 +158,26 @@ jobs:
           exit 1
 
       - name: Comment URL on PR
-        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
-        with:
-          header: preview
-          message: |
-            Preview: https://portfolio-${{ github.event.pull_request.number }}.preview.hightecc.com
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          body=$(cat <<EOF
+          <!-- sticky:preview -->
+          Preview: https://portfolio-${PR}.preview.hightecc.com
 
-            Built from `${{ github.event.pull_request.head.sha }}`. Tears down when this PR closes.
+          Built from \`${HEAD_SHA}\`. Tears down when this PR closes.
+          EOF
+          )
+          id=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" \
+            --jq '.[] | select(.body | startswith("<!-- sticky:preview -->")) | .id' \
+            | head -n1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" -f body="$body"
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" -f body="$body"
+          fi
 
   teardown:
     if: github.event.action == 'closed' && github.event.pull_request.user.login == github.repository_owner && github.event.pull_request.head.repo.full_name == github.repository
@@ -199,8 +212,20 @@ jobs:
             "PR_NUMBER='${PR_NUMBER}' /opt/hightecc/preview/hightecc-website-26/preview-manage.sh down" || true
 
       - name: Mark preview as torn down
-        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
-        with:
-          header: preview
-          message: |
-            Preview torn down.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          body=$(cat <<'EOF'
+          <!-- sticky:preview -->
+          Preview torn down.
+          EOF
+          )
+          id=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" \
+            --jq '.[] | select(.body | startswith("<!-- sticky:preview -->")) | .id' \
+            | head -n1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" -f body="$body"
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" -f body="$body"
+          fi
