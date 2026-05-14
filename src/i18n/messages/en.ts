@@ -157,7 +157,8 @@ const messages: MessageShape = {
     pitch: "No cookies. No tracking. No banners. Just the page you asked for.",
     brandSuffix: "· Basile Bong · Cologne, DE",
     impressum: "Legal notice",
-    build: "v2026.1 · Built with care",
+    version: "v2026.1",
+    buildTag: "Built with care",
   },
   localeSwitcher: {
     label: "Language",

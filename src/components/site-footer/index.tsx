@@ -20,7 +20,9 @@ export async function SiteFooter() {
           <div>
             © 2026 · <Link href="/impressum">{t("impressum")}</Link>
           </div>
-          <div>{t("build")}</div>
+          <div>
+            {t("version")} · {t("buildTag")}
+          </div>
         </div>
       </div>
     </footer>

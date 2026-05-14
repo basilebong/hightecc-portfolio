@@ -154,7 +154,8 @@ const messages = {
     pitch: "Keine Cookies. Kein Tracking. Keine Banner. Nur die Seite, die du angefordert hast.",
     brandSuffix: "· Basile Bong · Köln, DE",
     impressum: "Impressum",
-    build: "v2026.1 · Built with care",
+    version: "v2026.1",
+    buildTag: "Built with care",
   },
   localeSwitcher: {
     label: "Sprache",
