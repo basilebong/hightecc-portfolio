@@ -1,3 +1,5 @@
+import { defaultLocale, locales } from "@/i18n/config";
+
 export const SITE_URL = "https://hightecc.com";
 
 export const site = {
@@ -16,4 +18,12 @@ export const site = {
   ],
 } as const;
 
-export type NavKey = (typeof site.nav)[number]["key"];
+export function localeAlternates(lang: string, path = "") {
+  return {
+    canonical: `/${lang}${path}`,
+    languages: {
+      ...Object.fromEntries(locales.map((l) => [l, `/${l}${path}`])),
+      "x-default": `/${defaultLocale}${path}`,
+    },
+  };
+}

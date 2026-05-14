@@ -6,7 +6,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
-import { SITE_URL } from "@/lib/site";
+import { localeAlternates, SITE_URL } from "@/lib/site";
 
 import "../globals.css";
 
@@ -47,14 +47,7 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `/${lang}`,
-      languages: {
-        de: "/de",
-        en: "/en",
-        "x-default": "/de",
-      },
-    },
+    alternates: localeAlternates(lang),
     openGraph: {
       locale: lang === "en" ? "en_US" : "de_DE",
       type: "website",

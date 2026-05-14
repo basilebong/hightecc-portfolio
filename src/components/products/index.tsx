@@ -30,7 +30,7 @@ export async function Products() {
                     <span />
                     <span />
                   </div>
-                  <div className={styles.urlbar}>{t("labels.url")}</div>
+                  <div className={styles.urlbar}>untitled-project · /app</div>
                 </div>
                 <div className={styles.winBody}>
                   <div className={styles.sidebar}>
@@ -56,10 +56,10 @@ export async function Products() {
                   </div>
                 </div>
               </div>
-              <span className={`${styles.label} ${styles.labelTl}`}>{t("labels.tl")}</span>
-              <span className={`${styles.label} ${styles.labelTr}`}>{t("labels.tr")}</span>
-              <span className={`${styles.label} ${styles.labelBl}`}>{t("labels.bl")}</span>
-              <span className={`${styles.label} ${styles.labelBr}`}>{t("labels.br")}</span>
+              <span className={`${styles.label} ${styles.labelTl}`}>Fig. 04</span>
+              <span className={`${styles.label} ${styles.labelTr}`}>Untitled · 2026</span>
+              <span className={`${styles.label} ${styles.labelBl}`}>Wireframe v0.1</span>
+              <span className={`${styles.label} ${styles.labelBr}`}>not-final</span>
             </div>
           </Col>
 

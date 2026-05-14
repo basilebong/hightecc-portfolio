@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 
 import { Col, Container, Row } from "@/components/ui/grid";
 
@@ -9,6 +9,7 @@ const keys = ["one", "two", "three"] as const;
 
 export async function Pillars() {
   const t = await getTranslations("pillars");
+  const { pillars } = await getMessages();
 
   return (
     <section id="work">
@@ -34,9 +35,9 @@ export async function Pillars() {
               </h3>
               <p className={styles.body}>{t(`${k}.body`)}</p>
               <ul className={styles.list}>
-                <li>{t(`${k}.li1`)}</li>
-                <li>{t(`${k}.li2`)}</li>
-                <li>{t(`${k}.li3`)}</li>
+                {pillars[k].items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </Col>
           ))}

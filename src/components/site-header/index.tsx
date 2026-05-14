@@ -12,6 +12,8 @@ import styles from "./site-header.module.css";
 export async function SiteHeader() {
   const t = await getTranslations("nav");
 
+  // @lingual/i18n-check's static parser can't resolve t(item.key) below; these
+  // comments declare the literal keys so unused-key detection works.
   // i18n-check t("about")
   // i18n-check t("work")
   // i18n-check t("what")

@@ -8,7 +8,7 @@ import { Impressum } from "@/components/impressum";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
-import { SITE_URL } from "@/lib/site";
+import { localeAlternates, SITE_URL } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -23,14 +23,7 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `/${lang}/impressum`,
-      languages: {
-        de: "/de/impressum",
-        en: "/en/impressum",
-        "x-default": "/de/impressum",
-      },
-    },
+    alternates: localeAlternates(lang, "/impressum"),
   };
 }
 
