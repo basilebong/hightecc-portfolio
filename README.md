@@ -61,4 +61,4 @@ The production image is a multi-stage Next.js standalone build running as a non-
 
 ## License
 
-© Basile Bong. All rights reserved.
+Proprietary — all rights reserved. The source is published for portfolio and transparency purposes only; reuse requires written permission. See [`LICENSE`](./LICENSE).
