@@ -24,7 +24,7 @@ shadcn/ui on top of Tailwind v4 and the Next.js 16 App Router. Dark, single-them
 
 Design tokens live in `globals.css` as two parallel sets: shadcn tokens that drive the UI primitives, and landing-only tokens that drive the section styles. Both are exposed via `@theme inline`. Fonts come from `next/font/google` in the root layout and are wired in as CSS variables.
 
-German copy is inlined in each section component. `src/lib/site.ts` holds only the shared identity (name, owner, nav, contact URLs).
+Copy lives in `src/i18n/messages/{de,en}.ts`. DE is the source of truth; EN is type-checked against DE via the `MessageShape` helper and validated by `pnpm i18n:check`. Section components consume `getTranslations()` / `t.rich()` from `next-intl/server`. `src/lib/site.ts` holds only the shared identity (name, owner, nav, contact URLs, canonical site URL).
 
 # Modular structure
 
@@ -42,7 +42,7 @@ All content aligns to a 12-column grid via `Container`, `Row`, and `Col` from `@
 
 # Adding a section
 
-Create the component directory, use `<SectionHead>` for the heading, lay the body out with `<Container><Row><Col span={…} md={…}>…`, reach for shadcn primitives with their default variants, wire the component into `src/app/page.tsx`, and run `pnpm check && pnpm typecheck && pnpm build`.
+Create the component directory, use `<SectionHead>` for the heading, lay the body out with `<Container><Row><Col span={…} md={…}>…`, reach for shadcn primitives with their default variants, add any new copy to `src/i18n/messages/de.ts` (then translate via the `/translate` skill), wire the component into `src/app/[lang]/page.tsx`, and run `pnpm check && pnpm i18n:check && pnpm typecheck && pnpm build`.
 
 # Commit messages
 

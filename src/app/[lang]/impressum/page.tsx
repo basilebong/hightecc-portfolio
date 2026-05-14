@@ -7,8 +7,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Impressum } from "@/components/impressum";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { localeAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
-import { localeAlternates, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -35,7 +36,7 @@ export default async function ImpressumPage({ params }: { params: Promise<{ lang
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main">
         <Impressum />
       </main>
       <SiteFooter />

@@ -66,7 +66,7 @@ const messages: MessageShape = {
       name: "Approach",
       kicker: "Three principles",
       title: "What you book me for <em>(and not just for code).</em>",
-      lede: 'The real value rarely lives in the code alone. Here\'s what makes the difference between „project running" and „project failing".',
+      lede: 'The real value rarely lives in the code alone. Here\'s what makes the difference between "project running" and "project failing".',
     },
     one: {
       num: "01",
@@ -163,6 +163,9 @@ const messages: MessageShape = {
     label: "Language",
     de: "DE",
     en: "EN",
+  },
+  a11y: {
+    skipLink: "Skip to main content",
   },
 };
 

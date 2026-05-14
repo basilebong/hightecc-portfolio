@@ -36,7 +36,7 @@ export async function SiteHeader() {
               ))}
             </div>
           </Col>
-          <Col span={3} className={styles.cta}>
+          <Col span={9} md={3} mdStart={10} className={styles.cta}>
             <LocaleSwitcher />
             <Button asChild variant="outline">
               <Link href="/#contact">{t("cta")}</Link>

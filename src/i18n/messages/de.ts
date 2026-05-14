@@ -161,6 +161,9 @@ const messages = {
     de: "DE",
     en: "EN",
   },
+  a11y: {
+    skipLink: "Zum Hauptinhalt springen",
+  },
 } as const;
 
 export default messages;

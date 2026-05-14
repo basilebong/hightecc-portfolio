@@ -91,6 +91,28 @@ body {
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-2);
+  transition: top 0.15s;
+}
+
+.skip-link:focus-visible {
+  top: 8px;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
 .grid-overlay {
   position: fixed;
   inset: 0;

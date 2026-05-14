@@ -22,7 +22,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     <>
       <SiteHeader />
       <Hero />
-      <main>
+      <main id="main">
         <About />
         <Pillars />
         <Capabilities />

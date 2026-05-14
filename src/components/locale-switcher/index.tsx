@@ -27,10 +27,12 @@ export function LocaleSwitcher() {
             type="button"
             className={styles.btn}
             data-active={locale === active}
-            aria-current={locale === active ? "true" : undefined}
+            aria-pressed={locale === active}
+            aria-disabled={locale === active}
             onClick={() => {
               if (locale === active) return;
-              router.replace(pathname, { locale });
+              const hash = window.location.hash;
+              router.replace(`${pathname}${hash}`, { locale });
             }}
           >
             {t(locale)}

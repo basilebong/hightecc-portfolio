@@ -5,8 +5,9 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { localeAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
-import { localeAlternates, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 import "../globals.css";
 
@@ -70,6 +71,8 @@ export default async function LocaleLayout({
 
   setRequestLocale(lang);
 
+  const t = await getTranslations({ locale: lang, namespace: "a11y" });
+
   return (
     <html
       lang={lang}
@@ -77,6 +80,9 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider>
+          <a href="#main" className="skip-link">
+            {t("skipLink")}
+          </a>
           <div className="grid-overlay" aria-hidden />
           {children}
         </NextIntlClientProvider>
