@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { localeAlternates } from "@/i18n/metadata";
+import { localeAlternates, openGraphMetadata } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
 
@@ -49,13 +49,11 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: localeAlternates(lang),
-    openGraph: {
-      locale: lang === "en" ? "en_US" : "de_DE",
-      type: "website",
-      url: `${SITE_URL}/${lang}`,
+    openGraph: openGraphMetadata({
+      lang,
       title: t("title"),
       description: t("description"),
-    },
+    }),
   };
 }
 
