@@ -10,3 +10,7 @@ export const routing = defineRouting({
   localeDetection: true,
   alternateLinks: true,
 });
+
+export function generateLocaleStaticParams() {
+  return routing.locales.map((lang) => ({ lang }));
+}

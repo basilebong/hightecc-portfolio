@@ -1,4 +1,15 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
+import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
+
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
+
+import { routing } from "@/i18n/routing";
+
+export { generateLocaleStaticParams } from "@/i18n/routing";
 
 export const OG_SIZE = { width: 1200, height: 630 } as const;
 export const OG_CONTENT_TYPE = "image/png";
@@ -6,87 +17,42 @@ export const OG_CONTENT_TYPE = "image/png";
 const PALETTE = {
   bg: "#0a0a09",
   ink: "#ffffff",
-  mute: "#8a8a85",
   body: "#c8c8c8",
-  blobA: "#ff6b35",
-  blobB: "#ff8555",
-  blobC: "#ffb37a",
 } as const;
 
 const FONT = {
-  display: "DM Sans",
+  sans: "DM Sans",
   serif: "Merriweather",
-  mono: "JetBrains Mono",
 } as const;
 
-const fontCache = new Map<string, Promise<ArrayBuffer>>();
+const FONTS_DIR = path.join(process.cwd(), "src/assets/fonts");
+const GRAIN_PATH = path.join(process.cwd(), "src/assets/og-grain.png");
 
-async function fetchGoogleFont(
-  family: string,
-  weight: number,
-  italic: boolean,
-): Promise<ArrayBuffer> {
-  const axis = italic ? `ital,wght@1,${weight}` : `wght@${weight}`;
-  const cssUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:${axis}&display=swap`;
-  const cssRes = await fetch(cssUrl, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15",
-    },
-  });
-  if (!cssRes.ok) {
-    throw new Error(`Google Fonts CSS request failed for ${family} ${weight}: ${cssRes.status}`);
-  }
-  const css = await cssRes.text();
-  const url = css.match(/src:\s*url\((https:\/\/[^)]+)\)\s+format\(/)?.[1];
-  if (!url) throw new Error(`Could not extract font URL for ${family} ${weight}`);
-  const fontRes = await fetch(url);
-  if (!fontRes.ok) {
-    throw new Error(`Font binary fetch failed for ${family} ${weight}: ${fontRes.status}`);
-  }
-  return fontRes.arrayBuffer();
-}
-
-function loadGoogleFont(family: string, weight: number, italic = false): Promise<ArrayBuffer> {
-  const key = `${family}:${weight}:${italic}`;
-  const cached = fontCache.get(key);
-  if (cached) return cached;
-  const pending = fetchGoogleFont(family, weight, italic);
-  pending.catch(() => fontCache.delete(key));
-  fontCache.set(key, pending);
-  return pending;
-}
-
-type RenderOgImageProps = {
-  title: string;
-  description: string;
-  topLeft: string;
-  topRight: string;
-  bottomLeft: string;
-  bottomRight: string;
+type Assets = {
+  sans: Buffer;
+  serif: Buffer;
+  grainSrc: string;
 };
 
-export async function renderOgImage({
-  title,
-  description,
-  topLeft,
-  topRight,
-  bottomLeft,
-  bottomRight,
-}: RenderOgImageProps) {
-  const [dmSans, merriweatherItalic, jetBrainsMono] = await Promise.all([
-    loadGoogleFont(FONT.display, 700),
-    loadGoogleFont(FONT.serif, 400, true),
-    loadGoogleFont(FONT.mono, 500),
-  ]);
+let assetsPromise: Promise<Assets> | null = null;
 
-  const metaStyle = {
-    fontFamily: FONT.mono,
-    fontSize: 16,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase" as const,
-  };
+function getAssets(): Promise<Assets> {
+  assetsPromise ??= (async () => {
+    const [sans, serif, grain] = await Promise.all([
+      readFile(path.join(FONTS_DIR, "dm-sans-400.woff")),
+      readFile(path.join(FONTS_DIR, "merriweather-700.woff")),
+      readFile(GRAIN_PATH),
+    ]);
+    return {
+      sans,
+      serif,
+      grainSrc: `data:image/png;base64,${grain.toString("base64")}`,
+    };
+  })();
+  return assetsPromise;
+}
 
+function renderOgImage(title: string, description: string, assets: Assets) {
   return new ImageResponse(
     <div
       style={{
@@ -94,145 +60,99 @@ export async function renderOgImage({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        background: PALETTE.bg,
+        background: [
+          "radial-gradient(ellipse 900px 700px at 85% 25%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 35%, transparent 70%)",
+          "radial-gradient(ellipse 1000px 800px at 10% 90%, rgba(220,220,220,0.45) 0%, rgba(220,220,220,0.15) 35%, transparent 70%)",
+          "radial-gradient(circle 500px at 55% 60%, rgba(180,180,180,0.3) 0%, rgba(180,180,180,0.1) 40%, transparent 75%)",
+          PALETTE.bg,
+        ].join(", "),
         color: PALETTE.ink,
-        fontFamily: FONT.display,
+        fontFamily: FONT.sans,
         position: "relative",
         overflow: "hidden",
       }}
     >
-      <div style={{ position: "absolute", inset: 0, display: "flex" }}>
-        <div
-          style={{
-            position: "absolute",
-            top: -220,
-            left: -180,
-            width: 760,
-            height: 760,
-            borderRadius: 9999,
-            background: `radial-gradient(circle, ${PALETTE.blobA} 0%, transparent 65%)`,
-            filter: "blur(90px)",
-            opacity: 0.75,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 60,
-            left: 220,
-            width: 580,
-            height: 580,
-            borderRadius: 9999,
-            background: `radial-gradient(circle, ${PALETTE.blobB} 0%, transparent 65%)`,
-            filter: "blur(80px)",
-            opacity: 0.55,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 280,
-            left: -100,
-            width: 420,
-            height: 420,
-            borderRadius: 9999,
-            background: `radial-gradient(circle, ${PALETTE.blobC} 0%, transparent 60%)`,
-            filter: "blur(70px)",
-            opacity: 0.4,
-          }}
-        />
-      </div>
-
       <div
         style={{
           position: "absolute",
           inset: 0,
           display: "flex",
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
-          backgroundSize: "240px 240px",
-          opacity: 0.5,
+          flexWrap: "wrap",
+          opacity: 0.14,
         }}
-      />
+      >
+        {Array.from({ length: 8 * 4 }).map((_, i) => (
+          // biome-ignore lint/performance/noImgElement: rendered by Satori, not a browser
+          <img
+            // biome-ignore lint/suspicious/noArrayIndexKey: tile grid is static
+            key={i}
+            src={assets.grainSrc}
+            alt=""
+            width={160}
+            height={160}
+          />
+        ))}
+      </div>
 
       <div
         style={{
           position: "relative",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "center",
           width: "100%",
           height: "100%",
-          padding: "60px 80px",
+          padding: "80px",
         }}
       >
-        <div
+        <span
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <span style={{ ...metaStyle, color: PALETTE.ink }}>{topLeft}</span>
-          <span style={{ ...metaStyle, color: PALETTE.mute }}>{topRight}</span>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
+            fontFamily: FONT.serif,
+            fontWeight: 700,
+            fontSize: 84,
+            lineHeight: 1.0,
+            letterSpacing: "-0.02em",
+            color: PALETTE.ink,
             maxWidth: 1040,
           }}
         >
-          <span
-            style={{
-              fontFamily: FONT.display,
-              fontWeight: 700,
-              fontSize: 76,
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
-              color: PALETTE.ink,
-            }}
-          >
-            {title}
-          </span>
-          <span
-            style={{
-              fontFamily: FONT.serif,
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: 30,
-              lineHeight: 1.4,
-              color: PALETTE.body,
-              maxWidth: 880,
-              marginTop: 28,
-            }}
-          >
-            {description}
-          </span>
-        </div>
-
-        <div
+          {title}
+        </span>
+        <span
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
+            fontFamily: FONT.sans,
+            fontWeight: 400,
+            fontSize: 28,
+            lineHeight: 1.5,
+            color: PALETTE.body,
+            maxWidth: 880,
+            marginTop: 36,
           }}
         >
-          <span style={{ ...metaStyle, color: PALETTE.mute }}>{bottomLeft}</span>
-          <span style={{ ...metaStyle, color: PALETTE.mute }}>{bottomRight}</span>
-        </div>
+          {description}
+        </span>
       </div>
     </div>,
     {
       ...OG_SIZE,
       fonts: [
-        { name: FONT.display, data: dmSans, weight: 700, style: "normal" },
-        { name: FONT.serif, data: merriweatherItalic, weight: 400, style: "italic" },
-        { name: FONT.mono, data: jetBrainsMono, weight: 500, style: "normal" },
+        { name: FONT.serif, data: assets.serif, weight: 700, style: "normal" },
+        { name: FONT.sans, data: assets.sans, weight: 400, style: "normal" },
       ],
     },
   );
+}
+
+type MetadataNamespace = "metadata.home" | "metadata.impressum";
+
+export function createOgImageHandler({ namespace }: { namespace: MetadataNamespace }) {
+  return async function OgImage({ params }: { params: Promise<{ lang: string }> }) {
+    const { lang } = await params;
+    if (!hasLocale(routing.locales, lang)) notFound();
+    const [meta, assets] = await Promise.all([
+      getTranslations({ locale: lang, namespace }),
+      getAssets(),
+    ]);
+    return renderOgImage(meta("title"), meta("description"), assets);
+  };
 }
