@@ -146,7 +146,7 @@ jobs:
         run: |
           URL="https://portfolio-${PR_NUMBER}.preview.hightecc.com"
           for i in $(seq 1 40); do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || true)
+            code=$(curl -sL -o /dev/null -w "%{http_code}" "$URL" || true)
             if [ "$code" = "200" ]; then
               echo "preview healthy at $URL"
               exit 0
@@ -158,6 +158,7 @@ jobs:
           exit 1
 
       - name: Comment URL on PR
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}

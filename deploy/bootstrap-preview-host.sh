@@ -42,8 +42,14 @@ fi
 
 echo "[3/5] ensuring Caddyfile imports ${PREVIEW_CADDY_DIR}"
 if ! grep -qE '^[[:space:]]*import[[:space:]]+preview\.d/\*\.caddy' "$CADDYFILE"; then
-    cp "$CADDYFILE" "${CADDYFILE}.bak.$(date +%s)"
+    backup="${CADDYFILE}.bak.$(date +%s)"
+    cp "$CADDYFILE" "$backup"
     printf '\nimport preview.d/*.caddy\n' >> "$CADDYFILE"
+    if ! caddy validate --config "$CADDYFILE" --adapter caddyfile >/dev/null 2>&1; then
+        echo "Caddyfile failed validation after appending import; restoring $backup" >&2
+        cp "$backup" "$CADDYFILE"
+        exit 1
+    fi
 else
     echo "  already imports preview.d"
 fi
