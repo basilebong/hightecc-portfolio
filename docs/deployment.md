@@ -4,8 +4,8 @@
 
 Two pipelines, both running on GitHub Actions and deploying via SSH to a single VPS that fronts everything with Caddy (auto-TLS via Let's Encrypt).
 
-- **Production** — `main` only. One container, fixed port, served at `hightecc.com`.
-- **PR Preview** — every PR opened from a same-repo branch. One container per PR, deterministic port, served at `portfolio-<N>.preview.hightecc.com`. Torn down on close/merge.
+- **Production**: `main` only. One container, fixed port, served at `hightecc.com`.
+- **PR Preview**: every PR opened from a same-repo branch. One container per PR, deterministic port, served at `portfolio-<N>.preview.hightecc.com`. Torn down on close/merge.
 
 The same SSH user runs both flows. The host has no inbound port besides 22, 80, 443.
 
@@ -13,12 +13,12 @@ The same SSH user runs both flows. The host has no inbound port besides 22, 80, 
 
 `.github/workflows/deploy.yml` triggers on push to `main`.
 
-1. **quality** — `pnpm check`, `pnpm typecheck`, plus a grep that bans `NEXT_PUBLIC_*` outside `src/lib/env.ts`.
-2. **build** — Docker buildx, push to `ghcr.io/basilebong/hightecc-portfolio` tagged `latest` and `sha-<sha>`. Cache via GHA cache.
-3. **deploy** — SSH to the host, `scp` `deploy/compose.yaml` into `/opt/hightecc/hightecc-website-26/`, rewrite `IMAGE=` in the on-host `.env`, then `docker compose pull && up -d`, then `docker image prune -f`.
-4. **healthcheck** — poll `https://hightecc.com` until 200 (40s budget).
+1. **quality**: `pnpm check`, `pnpm typecheck`, plus a grep that bans `NEXT_PUBLIC_*` outside `src/lib/env.ts`.
+2. **build**: Docker buildx, push to `ghcr.io/basilebong/hightecc-portfolio` tagged `latest` and `sha-<sha>`. Cache via GHA cache.
+3. **deploy**: SSH to the host, `scp` `deploy/compose.yaml` into `/opt/hightecc/hightecc-website-26/`, rewrite `IMAGE=` in the on-host `.env`, then `docker compose pull && up -d`, then `docker image prune -f`.
+4. **healthcheck**: poll `https://hightecc.com` until 200 (40s budget).
 
-Caddy reverse-proxies `hightecc.com` to `127.0.0.1:8001` — defined in `/etc/caddy/Caddyfile`.
+Caddy reverse-proxies `hightecc.com` to `127.0.0.1:8001`, defined in `/etc/caddy/Caddyfile`.
 
 ### Production state on the host
 
@@ -32,27 +32,27 @@ Caddy reverse-proxies `hightecc.com` to `127.0.0.1:8001` — defined in `/etc/ca
 
 `.github/workflows/preview.yml` triggers on `pull_request` events (`opened`, `synchronize`, `reopened`, `closed`).
 
-**Previews are gated to PRs authored by the repo owner on same-repo branches.** Every job (including `quality`) checks both `github.event.pull_request.user.login == github.repository_owner` and `github.event.pull_request.head.repo.full_name == github.repository`. Fork PRs and PRs from any other author skip the workflow entirely — no jobs run.
+**Previews are gated to PRs authored by the repo owner on same-repo branches.** Every job (including `quality`) checks both `github.event.pull_request.user.login == github.repository_owner` and `github.event.pull_request.head.repo.full_name == github.repository`. Fork PRs and PRs from any other author skip the workflow entirely. No jobs run.
 
 For eligible PRs:
 
-1. **quality** — same checks as production.
-2. **build** — push image tagged `pr-<N>` and `sha-<sha>` to GHCR.
-3. **deploy** — SSH to host, `scp` `deploy/preview-compose.yaml` to `/tmp/preview-compose-<N>.yaml` and `deploy/preview-manage.sh` to `/opt/hightecc/preview/hightecc-website-26/preview-manage.sh`, then run `preview-manage.sh up`. The script:
+1. **quality**: same checks as production.
+2. **build**: push image tagged `pr-<N>` and `sha-<sha>` to GHCR.
+3. **deploy**: SSH to host, `scp` `deploy/preview-compose.yaml` to `/tmp/preview-compose-<N>.yaml` and `deploy/preview-manage.sh` to `/opt/hightecc/preview/hightecc-website-26/preview-manage.sh`, then run `preview-manage.sh up`. The script:
    - writes `/opt/hightecc/preview/hightecc-website-26/pr-<N>/{compose.yaml,.env}`
    - writes a `/etc/caddy/preview.d/portfolio-<N>.caddy` reverse-proxy snippet
    - `docker compose up -d` with `mem_limit=512m`, `cpus=0.5`, `cap_drop: ALL`, `no-new-privileges`
    - `sudo systemctl reload caddy` (only command in the deploy user's sudoers)
-4. **healthcheck** — poll `https://portfolio-<N>.preview.hightecc.com` until 200.
-5. **comment** — sticky PR comment with the URL.
+4. **healthcheck**: poll `https://portfolio-<N>.preview.hightecc.com` until 200.
+5. **comment**: sticky PR comment with the URL.
 
 On PR close (or merge):
 
-6. **teardown** — `preview-manage.sh down` removes the container, deletes `/opt/hightecc/preview/hightecc-website-26/pr-<N>/` and the Caddy snippet, reloads Caddy, prunes images.
+6. **teardown**: `preview-manage.sh down` removes the container, deletes `/opt/hightecc/preview/hightecc-website-26/pr-<N>/` and the Caddy snippet, reloads Caddy, prunes images.
 
 ### Port allocation
 
-`PR_PORT = 18000 + PR_NUMBER`. PR #1 → 18001, PR #42 → 18042. Each port binds to `127.0.0.1` only — never exposed externally. Caddy is the only public entry point.
+`PR_PORT = 18000 + PR_NUMBER`. PR #1 → 18001, PR #42 → 18042. Each port binds to `127.0.0.1` only, never exposed externally. Caddy is the only public entry point.
 
 ### Preview state on the host
 
@@ -135,7 +135,7 @@ sed -i 's|^IMAGE=.*|IMAGE=ghcr.io/basilebong/hightecc-portfolio:sha-<good-sha>|'
 docker compose pull && docker compose up -d
 ```
 
-Or push a revert commit to `main` — the workflow will redeploy.
+Or push a revert commit to `main`. The workflow will redeploy.
 
 ### Caddy didn't pick up a preview
 
@@ -154,10 +154,10 @@ sudo caddy validate --config /etc/caddy/Caddyfile
 
 The repo is public; the host is private. Things to keep in mind:
 
-- **Only PRs authored by the repo owner (on same-repo branches) get previews.** The workflow gates every job on `github.event.pull_request.user.login == github.repository_owner && github.event.pull_request.head.repo.full_name == github.repository`. Anything else — forks, other authors — skips the workflow entirely. `quality` is also gated, so fork PRs run nothing here.
+- **Only PRs authored by the repo owner (on same-repo branches) get previews.** The workflow gates every job on `github.event.pull_request.user.login == github.repository_owner && github.event.pull_request.head.repo.full_name == github.repository`. Anything else (forks, other authors) skips the workflow entirely. `quality` is also gated, so fork PRs run nothing here.
 - **Preview code runs in a hardened container.** `mem_limit=512m`, `cpus=0.5`, `pids_limit=256`, `cap_drop: ALL`, `no-new-privileges:true`. Bound to `127.0.0.1` only.
-- **Sudoers is one line.** The deploy user can only `systemctl reload caddy` — nothing else with elevated privileges.
+- **Sudoers is one line.** The deploy user can only `systemctl reload caddy`, nothing else with elevated privileges.
 - **Image source is locked.** `preview-manage.sh` refuses any `IMAGE` not starting with `ghcr.io/basilebong/hightecc-portfolio:`.
 - **Active-preview cap.** `preview-manage.sh` refuses a new preview if 20 are already running. Adjust `MAX_ACTIVE_PREVIEWS` in the script if needed.
 - **Previews are non-indexable.** `X-Robots-Tag: noindex, nofollow, noarchive` set in the Caddy snippet.
-- **Cookies don't cross subdomains** unless prod sets `Domain=.hightecc.com` — it doesn't. If you add cross-subdomain cookies later (auth, etc.), revisit this.
+- **Cookies don't cross subdomains** unless prod sets `Domain=.hightecc.com`, which it doesn't. If you add cross-subdomain cookies later (auth, etc.), revisit this.
