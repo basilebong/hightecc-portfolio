@@ -134,7 +134,7 @@ jobs:
       - name: Healthcheck
         run: |
           for i in {1..30}; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" https://hightecc.com || true)
+            code=$(curl -sL -o /dev/null -w "%{http_code}" https://hightecc.com || true)
             if [ "$code" = "200" ]; then
               echo "healthy"
               exit 0
