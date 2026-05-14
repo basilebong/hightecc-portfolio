@@ -1,3 +1,5 @@
+export const SITE_URL = "https://hightecc.com";
+
 export const site = {
   name: "Hightecc",
   owner: {
@@ -7,9 +9,9 @@ export const site = {
     linkedin: "https://linkedin.com/in/basilebong",
   },
   nav: [
-    { label: "01 · Über", href: "/#about" },
-    { label: "02 · Arbeit", href: "/#work" },
-    { label: "03 · Was", href: "/#what" },
-    { label: "04 · Kontakt", href: "/#contact" },
+    { key: "about", href: "/#about" },
+    { key: "work", href: "/#work" },
+    { key: "what", href: "/#what" },
+    { key: "contact", href: "/#contact" },
   ],
 } as const;

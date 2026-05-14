@@ -1,25 +1,26 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { LogoWordmark } from "@/components/logo-wordmark";
+import { Link } from "@/i18n/navigation";
 
 import styles from "./site-footer.module.css";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const t = await getTranslations("footer");
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <p className={styles.pitch}>
-          Keine Cookies. Kein Tracking. Keine Banner. Nur die Seite, die du angefordert hast.
-        </p>
+        <p className={styles.pitch}>{t("pitch")}</p>
         <div className={styles.row}>
           <div className={styles.brand}>
             <LogoWordmark className={styles.wm} />
-            <span>· Basile Bong · Köln, DE</span>
+            <span>{t("brandSuffix")}</span>
           </div>
           <div>
-            © 2026 · <Link href="/impressum">Impressum</Link>
+            © 2026 · <Link href="/impressum">{t("impressum")}</Link>
           </div>
-          <div>v2026.1 · Built with care</div>
+          <div>{t("build")}</div>
         </div>
       </div>
     </footer>

@@ -25,6 +25,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm check
+      - run: pnpm i18n:check
       - run: pnpm typecheck
       - name: Forbid NEXT_PUBLIC_ outside src/lib/env.ts
         run: |

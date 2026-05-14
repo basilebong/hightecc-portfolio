@@ -1,0 +1,33 @@
+name: Quality
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: pnpm/action-setup@a15d269cd4658e1107c09f1fabf4cbd7bd1f308a # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm check
+      - run: pnpm i18n:check
+      - run: pnpm typecheck
+      - name: Forbid NEXT_PUBLIC_ outside src/lib/env.ts
+        run: |
+          set -e
+          matches=$(grep -rEn 'NEXT_PUBLIC_[A-Z0-9_]+' \
+            --include='*.ts' --include='*.tsx' --include='*.js' --include='*.mjs' \
+            src next.config.ts 2>/dev/null \
+            | grep -v '^src/lib/env\.ts:' || true)
+          if [ -n "$matches" ]; then
+            echo "::error::NEXT_PUBLIC_* must only be referenced in src/lib/env.ts. Found:"
+            echo "$matches"
+            exit 1
+          fi

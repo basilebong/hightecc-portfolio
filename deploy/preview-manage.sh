@@ -38,6 +38,8 @@ count_active() {
 up() {
     : "${IMAGE:?IMAGE required}"
 
+    trap 'rm -f "$CADDY_SNIPPET"' ERR
+
     # Lock image to our own GHCR namespace so a malicious env can't pull arbitrary images.
     local expected_prefix="ghcr.io/basilebong/hightecc-portfolio:"
     if [[ "$IMAGE" != "${expected_prefix}"* ]]; then
@@ -71,8 +73,16 @@ IMAGE=${IMAGE}
 PR_PORT=${PR_PORT}
 PR_NUMBER=${PR_NUMBER}
 EOF
-
     umask 022
+
+    docker rm -f "portfolio-${PR_NUMBER}" >/dev/null 2>&1 || true
+
+    (
+        cd "$PR_DIR"
+        docker compose pull
+        docker compose up -d --remove-orphans
+    )
+
     cat > "$CADDY_SNIPPET" <<EOF
 ${HOSTNAME} {
     encode zstd gzip
@@ -94,13 +104,9 @@ ${HOSTNAME} {
 }
 EOF
 
-    (
-        cd "$PR_DIR"
-        docker compose pull
-        docker compose up -d --remove-orphans
-    )
-
     reload_caddy
+
+    trap - ERR
     echo "preview up: https://${HOSTNAME} -> 127.0.0.1:${PR_PORT}"
 }
 
