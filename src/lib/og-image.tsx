@@ -78,7 +78,7 @@ function renderOgImage(title: string, description: string, assets: Assets) {
           inset: 0,
           display: "flex",
           flexWrap: "wrap",
-          opacity: 0.14,
+          opacity: 0.05,
         }}
       >
         {Array.from({ length: 8 * 4 }).map((_, i) => (
