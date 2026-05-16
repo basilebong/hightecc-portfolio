@@ -207,21 +207,27 @@
 }
 
 @media (max-width: 720px) {
+  .inner {
+    grid-template-rows: 1fr auto 1fr;
+  }
+
   .top {
     display: none;
   }
 
+  .center {
+    grid-row: 2;
+  }
+
   .bottom {
+    grid-row: 3;
+    align-self: end;
     grid-template-columns: 1fr;
+    justify-items: center;
     gap: 8px;
   }
 
   .bottom > .metaBlock {
     display: none;
-  }
-
-  .ctaRow {
-    justify-self: start;
-    flex-wrap: wrap;
   }
 }
