@@ -42,7 +42,7 @@ export function MobileMenu({ navItems, ctaLabel, menuLabel }: MobileMenuProps) {
           ))}
         </nav>
         <div className={styles.footer}>
-          <LocaleSwitcher />
+          <LocaleSwitcher size="lg" />
           <Button asChild variant="outline">
             <Link href="/#contact" onClick={close}>
               {ctaLabel}

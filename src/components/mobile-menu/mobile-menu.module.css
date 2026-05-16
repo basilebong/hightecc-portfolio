@@ -1,6 +1,7 @@
 .links {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   padding: 8px 20px 20px;
   font-family: var(--font-serif);
   font-size: 28px;
@@ -10,14 +11,9 @@
 
 .link {
   display: block;
-  padding: 18px 0;
+  padding: 12px 0;
   color: #fff;
-  border-bottom: 1px solid var(--line);
   transition: color 0.15s;
-}
-
-.link:last-child {
-  border-bottom: 0;
 }
 
 .link:hover {
@@ -30,6 +26,5 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  padding: 16px;
-  border-top: 1px solid var(--line);
+  padding: 16px 20px 20px;
 }

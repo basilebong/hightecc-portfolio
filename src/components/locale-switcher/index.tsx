@@ -7,14 +7,18 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 
 import styles from "./locale-switcher.module.css";
 
-export function LocaleSwitcher() {
+type LocaleSwitcherProps = {
+  size?: "default" | "lg";
+};
+
+export function LocaleSwitcher({ size = "default" }: LocaleSwitcherProps = {}) {
   const active = useLocale();
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations("localeSwitcher");
 
   return (
-    <fieldset className={styles.switcher}>
+    <fieldset className={styles.switcher} data-size={size}>
       <legend className={styles.legend}>{t("label")}</legend>
       {locales.map((locale, index) => (
         <span key={locale} className={styles.cell}>
