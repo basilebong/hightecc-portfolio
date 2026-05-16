@@ -207,21 +207,17 @@
 }
 
 @media (max-width: 720px) {
-  .top,
+  .top {
+    display: none;
+  }
+
   .bottom {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .top > *:nth-child(n),
-  .bottom > *:nth-child(n) {
-    justify-self: start;
-    text-align: left;
-  }
-
-  .top > *:nth-child(n) .metaBlock,
-  .bottom > *:nth-child(n) .metaBlock {
-    align-items: flex-start;
+  .bottom > .metaBlock {
+    display: none;
   }
 
   .ctaRow {
