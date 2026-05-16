@@ -5,6 +5,7 @@ const messages = {
     what: "03 · Was",
     contact: "04 · Kontakt",
     cta: "Let's talk →",
+    menu: "Menü",
   },
   metadata: {
     home: {

@@ -7,6 +7,7 @@ const messages: MessageShape = {
     what: "03 · What",
     contact: "04 · Contact",
     cta: "Let's talk →",
+    menu: "Menu",
   },
   metadata: {
     home: {

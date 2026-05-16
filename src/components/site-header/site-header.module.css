@@ -25,7 +25,16 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.desktopCta {
+  display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.mobileCta {
+  display: none;
 }
 
 .logo {
@@ -60,5 +69,13 @@
 
   .linksCol {
     display: none;
+  }
+
+  .desktopCta {
+    display: none;
+  }
+
+  .mobileCta {
+    display: flex;
   }
 }
