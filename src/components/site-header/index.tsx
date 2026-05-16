@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { LogoWordmark } from "@/components/logo-wordmark";
+import { MobileMenu } from "@/components/mobile-menu";
 import { Button } from "@/components/ui/button";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { Link } from "@/i18n/navigation";
@@ -18,6 +19,8 @@ export async function SiteHeader() {
   // i18n-check t("work")
   // i18n-check t("what")
   // i18n-check t("contact")
+  const navItems = site.nav.map((item) => ({ href: item.href, label: t(item.key) }));
+
   return (
     <nav className={styles.nav}>
       <Container>
@@ -29,18 +32,23 @@ export async function SiteHeader() {
           </Col>
           <Col span={6} className={styles.linksCol}>
             <div className={styles.links}>
-              {site.nav.map((item) => (
+              {navItems.map((item) => (
                 <Link key={item.href} href={item.href}>
-                  {t(item.key)}
+                  {item.label}
                 </Link>
               ))}
             </div>
           </Col>
           <Col span={9} md={3} mdStart={10} className={styles.cta}>
-            <LocaleSwitcher />
-            <Button asChild variant="outline">
-              <Link href="/#contact">{t("cta")}</Link>
-            </Button>
+            <div className={styles.desktopCta}>
+              <LocaleSwitcher />
+              <Button asChild variant="outline">
+                <Link href="/#contact">{t("cta")}</Link>
+              </Button>
+            </div>
+            <div className={styles.mobileCta}>
+              <MobileMenu navItems={navItems} ctaLabel={t("cta")} menuLabel={t("menu")} />
+            </div>
           </Col>
         </Row>
       </Container>

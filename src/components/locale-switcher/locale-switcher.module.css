@@ -33,6 +33,14 @@
   color: var(--line);
 }
 
+.switcher[data-size="lg"] {
+  font-size: 14px;
+}
+
+.switcher[data-size="lg"] .sep {
+  padding: 0 10px;
+}
+
 .btn {
   background: none;
   border: 0;
@@ -43,6 +51,11 @@
   text-transform: inherit;
   cursor: pointer;
   transition: color 0.15s;
+}
+
+.switcher[data-size="lg"] .btn {
+  padding: 14px 8px;
+  min-height: 44px;
 }
 
 .btn:hover {
