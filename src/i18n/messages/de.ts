@@ -4,7 +4,7 @@ const messages = {
     work: "02 · Arbeit",
     what: "03 · Was",
     contact: "04 · Kontakt",
-    cta: "Let's talk →",
+    cta: "Let's talk",
     menu: "Menü",
   },
   metadata: {
@@ -29,7 +29,7 @@ const messages = {
       fmtLabel: "FMT 2026",
       fmtValue: "Freelance · Remote + Köln",
       scrollLabel: "Scroll",
-      scrollValue: "↓ 04 Kapitel · ~2 min",
+      scrollValue: "04 Kapitel · ~2 min",
     },
     headline: {
       line1: "Ideen",

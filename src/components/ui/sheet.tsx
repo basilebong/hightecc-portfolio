@@ -2,7 +2,7 @@
 
 import type * as React from "react";
 
-import { XIcon } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { Dialog as SheetPrimitive } from "radix-ui";
 
 import { Button } from "@/components/ui/button";
@@ -66,7 +66,7 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close data-slot="sheet-close" asChild>
             <Button variant="ghost" className="absolute top-3 right-3" size="icon-sm">
-              <XIcon />
+              <X />
               <span className="sr-only">Close</span>
             </Button>
           </SheetPrimitive.Close>

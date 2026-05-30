@@ -6,7 +6,7 @@ const messages: MessageShape = {
     work: "02 · Work",
     what: "03 · What",
     contact: "04 · Contact",
-    cta: "Let's talk →",
+    cta: "Let's talk",
     menu: "Menu",
   },
   metadata: {
@@ -31,7 +31,7 @@ const messages: MessageShape = {
       fmtLabel: "FMT 2026",
       fmtValue: "Freelance · Remote + Cologne",
       scrollLabel: "Scroll",
-      scrollValue: "↓ 04 chapters · ~2 min",
+      scrollValue: "04 chapters · ~2 min",
     },
     headline: {
       line1: "Ideas",

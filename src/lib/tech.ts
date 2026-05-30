@@ -6,8 +6,8 @@ export const capabilityTags = {
 } as const;
 
 export const capabilityIndex = {
-  a: "→ A",
-  b: "→ B",
-  c: "→ C",
-  d: "→ D",
+  a: "A",
+  b: "B",
+  c: "C",
+  d: "D",
 } as const;
