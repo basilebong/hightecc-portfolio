@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ArrowDown, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,7 @@ export async function Hero() {
             <Button asChild size="lg">
               <Link href="#contact">
                 {t("cta.primary")}
-                <span aria-hidden>→</span>
+                <ArrowRight aria-hidden />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
@@ -68,7 +69,9 @@ export async function Hero() {
           </div>
           <div className={styles.metaBlock}>
             <span className="meta meta-label">{t("meta.scrollLabel")}</span>
-            <span className="meta meta-val">{t("meta.scrollValue")}</span>
+            <span className="meta meta-val">
+              <ArrowDown aria-hidden /> {t("meta.scrollValue")}
+            </span>
           </div>
         </div>
       </div>

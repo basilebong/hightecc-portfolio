@@ -1,3 +1,4 @@
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getTranslations } from "next-intl/server";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
@@ -43,7 +44,9 @@ export async function SiteHeader() {
             <div className={styles.desktopCta}>
               <LocaleSwitcher />
               <Button asChild variant="outline">
-                <Link href="/#contact">{t("cta")}</Link>
+                <Link href="/#contact">
+                  {t("cta")} <ArrowRight aria-hidden />
+                </Link>
               </Button>
             </div>
             <div className={styles.mobileCta}>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { MenuIcon } from "lucide-react";
+import { ArrowRight, List } from "@phosphor-icons/react";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,7 @@ export function MobileMenu({ navItems, ctaLabel, menuLabel }: MobileMenuProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button type="button" variant="ghost" size="icon" aria-label={menuLabel}>
-          <MenuIcon />
+          <List />
         </Button>
       </SheetTrigger>
       <SheetContent side="right">
@@ -45,7 +45,7 @@ export function MobileMenu({ navItems, ctaLabel, menuLabel }: MobileMenuProps) {
           <LocaleSwitcher size="lg" />
           <Button asChild variant="outline">
             <Link href="/#contact" onClick={close}>
-              {ctaLabel}
+              {ctaLabel} <ArrowRight aria-hidden />
             </Link>
           </Button>
         </div>
