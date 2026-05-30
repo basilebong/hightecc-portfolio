@@ -10,6 +10,7 @@ export const site = {
   },
   nav: [
     { key: "about", href: "/#about" },
+    { key: "approach", href: "/#approach" },
     { key: "work", href: "/#work" },
     { key: "what", href: "/#what" },
     { key: "contact", href: "/#contact" },

@@ -12,7 +12,7 @@ export async function Pillars() {
   const { pillars } = await getMessages();
 
   return (
-    <section id="work">
+    <section id="approach">
       <SectionHead
         num="02"
         name={t("section.name")}

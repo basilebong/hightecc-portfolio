@@ -3,9 +3,10 @@ import type { MessageShape } from "./shape";
 const messages: MessageShape = {
   nav: {
     about: "01 · About",
-    work: "02 · Work",
-    what: "03 · What",
-    contact: "04 · Contact",
+    approach: "02 · Approach",
+    work: "03 · Work",
+    what: "04 · What",
+    contact: "05 · Contact",
     cta: "Let's talk",
     menu: "Menu",
   },
@@ -92,6 +93,35 @@ const messages: MessageShape = {
       items: ["ROI-driven backlog", "Release plans that hold", "Critical paths first"],
     },
   },
+  work: {
+    section: {
+      name: "Work",
+      kicker: "Case studies",
+      title: "What I've <em>built</em>.",
+      lede: "A selection of client projects and products of my own. Some are live, some are still taking shape.",
+    },
+    jmt: {
+      badge: "Live · Client work",
+      role: "01 · Built in Angular",
+      desc: "I helped build the new JoinMyTrip website and implemented it in Angular, for a travel community of 250,000+ members. Drag the slider to compare old and new.",
+      beforeLabel: "Before",
+      afterLabel: "After",
+      beforeAlt: "JoinMyTrip, old site",
+      afterAlt: "JoinMyTrip, new site",
+      sliderLabel: "Before and after comparison",
+    },
+    xray: {
+      badge: "In progress · Open source",
+      desc: "An open-source tool to test and understand voice AI agents. Replay any conversation, listen to the audio, and see exactly where it worked and where it didn't.",
+      alt: "xray, voice-agent debugger",
+    },
+    onehouse: {
+      badge: "Coming soon · Open source",
+      desc: "A self-hosted platform for small, private family apps: a mobile-first PWA that's also an MCP server, so it's usable by people and AI agents like Claude or ChatGPT. Open source, privacy-first, minimal.",
+      alt: "OneHouse",
+    },
+    githubLabel: "GitHub repo",
+  },
   capabilities: {
     section: {
       name: "What",
@@ -117,25 +147,6 @@ const messages: MessageShape = {
     },
     note: "Other stacks? <strong>Worth asking.</strong> The right tool is decided by the problem, not by the resume.",
     noteTag: "NOTE",
-  },
-  products: {
-    section: {
-      name: "Own products",
-      kicker: "In progress",
-      title: "On the side, I'm building <em>something of my own.</em>",
-    },
-    heading: "No name yet. <em>Clear direction.</em>",
-    body: "Between client projects, I'm building something of my own. More on it when it's ready. Building something too? Let's spar.",
-    meta: {
-      statusK: "Status",
-      statusV: "Prototype · Research",
-      launchK: "Launch",
-      launchV: "TBD · 2026",
-      modeK: "Mode",
-      modeV: "Bootstrap · Solo",
-      updatesK: "Updates",
-      updatesV: "By email on request",
-    },
   },
   contact: {
     heading: "Tell me about <em>your project.</em>",

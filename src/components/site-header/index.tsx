@@ -17,6 +17,7 @@ export async function SiteHeader() {
   // @lingual/i18n-check's static parser can't resolve t(item.key) below; these
   // comments declare the literal keys so unused-key detection works.
   // i18n-check t("about")
+  // i18n-check t("approach")
   // i18n-check t("work")
   // i18n-check t("what")
   // i18n-check t("contact")

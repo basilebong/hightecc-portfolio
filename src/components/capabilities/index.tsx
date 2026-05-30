@@ -16,7 +16,7 @@ export async function Capabilities() {
   return (
     <section id="what">
       <SectionHead
-        num="03"
+        num="04"
         name={t("section.name")}
         kicker={t("section.kicker")}
         title={t.rich("section.title", {

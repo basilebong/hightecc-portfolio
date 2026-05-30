@@ -8,9 +8,9 @@ import { Capabilities } from "@/components/capabilities";
 import { Contact } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Pillars } from "@/components/pillars";
-import { Products } from "@/components/products";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Work } from "@/components/work";
 import { routing } from "@/i18n/routing";
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
@@ -25,8 +25,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <main id="main">
         <About />
         <Pillars />
+        <Work />
         <Capabilities />
-        <Products />
         <Contact />
       </main>
       <SiteFooter />

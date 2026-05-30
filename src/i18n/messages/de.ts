@@ -1,9 +1,10 @@
 const messages = {
   nav: {
     about: "01 · Über",
-    work: "02 · Arbeit",
-    what: "03 · Was",
-    contact: "04 · Kontakt",
+    approach: "02 · Arbeitsweise",
+    work: "03 · Arbeit",
+    what: "04 · Was",
+    contact: "05 · Kontakt",
     cta: "Let's talk",
     menu: "Menü",
   },
@@ -90,6 +91,35 @@ const messages = {
       items: ["ROI-getriebener Backlog", "Release-Pläne, die halten", "Kritische Pfade zuerst"],
     },
   },
+  work: {
+    section: {
+      name: "Arbeit",
+      kicker: "Fallstudien",
+      title: "Was ich <em>gebaut</em> habe.",
+      lede: "Eine Auswahl aus Kundenprojekten und eigenen Produkten. Manches ist live, manches entsteht gerade.",
+    },
+    jmt: {
+      badge: "Live · Kundenprojekt",
+      role: "01 · In Angular umgesetzt",
+      desc: "Ich habe an der neuen JoinMyTrip-Website mitgebaut und sie in Angular umgesetzt, für eine Reise-Community mit 250.000+ Mitgliedern. Zieh den Regler, um Alt und Neu zu vergleichen.",
+      beforeLabel: "Vorher",
+      afterLabel: "Nachher",
+      beforeAlt: "JoinMyTrip, alte Seite",
+      afterAlt: "JoinMyTrip, neue Seite",
+      sliderLabel: "Vorher-Nachher-Vergleich",
+    },
+    xray: {
+      badge: "In Arbeit · Open Source",
+      desc: "Ein Open-Source-Tool, um Voice-AI-Agenten zu testen und zu verstehen. Spiele jedes Gespräch erneut ab, hör dir das Audio an und sieh genau, wo es rund lief und wo nicht.",
+      alt: "xray, Voice-Agent-Debugger",
+    },
+    onehouse: {
+      badge: "Coming Soon · Open Source",
+      desc: "Eine self-hosted Plattform für kleine, private Familien Apps: Eine mobile-first PWA, die zugleich MCP-Server ist, also nutzbar von Menschen und KI-Agenten wie Claude oder ChatGPT. Open Source, privacy-first, minimalistisch.",
+      alt: "OneHouse",
+    },
+    githubLabel: "GitHub-Repo",
+  },
   capabilities: {
     section: {
       name: "Was",
@@ -115,25 +145,6 @@ const messages = {
     },
     note: "Andere Stacks? <strong>Fragen lohnt sich.</strong> Das richtige Werkzeug entscheidet sich am Problem, nicht am Lebenslauf.",
     noteTag: "NOTE",
-  },
-  products: {
-    section: {
-      name: "Eigene Produkte",
-      kicker: "In Arbeit",
-      title: "Nebenher baue ich etwas <em>eigenes.</em>",
-    },
-    heading: "Noch ohne Namen. <em>Mit klarer Richtung.</em>",
-    body: "Zwischen Kund·innen-Projekten baue ich an etwas Eigenem. Mehr dazu, sobald's so weit ist. Du baust auch was? Lass uns sparren.",
-    meta: {
-      statusK: "Status",
-      statusV: "Prototyp · Research",
-      launchK: "Launch",
-      launchV: "TBD · 2026",
-      modeK: "Modus",
-      modeV: "Bootstrap · Solo",
-      updatesK: "Updates",
-      updatesV: "Per Mail auf Anfrage",
-    },
   },
   contact: {
     heading: "Erzähl mir von <em>Deinem Projekt.</em>",

@@ -64,7 +64,7 @@ export async function Hero() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="#work">{t("cta.secondary")}</Link>
+              <Link href="#approach">{t("cta.secondary")}</Link>
             </Button>
           </div>
           <div className={styles.metaBlock}>
