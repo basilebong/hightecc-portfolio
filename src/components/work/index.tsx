@@ -108,23 +108,6 @@ export async function Work() {
 
         <div className={styles.rowBlock}>
           <Row className={styles.rowAlign} rowGap={28}>
-            <Col span={12} md={6} mdStart={7}>
-              <div className={styles.rowText}>
-                <span className={styles.bignum}>02</span>
-                <span className={`${styles.badge} ${styles.badgeProg}`}>
-                  <span className={styles.dot} />
-                  {t("xray.badge")}
-                </span>
-                <h3 className={styles.ptitle}>xray</h3>
-                <p className={styles.desc}>{t("xray.desc")}</p>
-                <div className={styles.tags}>
-                  {xrayTags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-                <RepoLink href={XRAY_REPO} label={t("githubLabel")} />
-              </div>
-            </Col>
             <Col span={12} md={5} mdStart={1}>
               <div className={styles.frame}>
                 <div className={styles.chrome}>
@@ -142,6 +125,23 @@ export async function Work() {
                   />
                 </div>
                 <CornerMarks />
+              </div>
+            </Col>
+            <Col span={12} md={6} mdStart={7}>
+              <div className={styles.rowText}>
+                <span className={styles.bignum}>02</span>
+                <span className={`${styles.badge} ${styles.badgeProg}`}>
+                  <span className={styles.dot} />
+                  {t("xray.badge")}
+                </span>
+                <h3 className={styles.ptitle}>xray</h3>
+                <p className={styles.desc}>{t("xray.desc")}</p>
+                <div className={styles.tags}>
+                  {xrayTags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                <RepoLink href={XRAY_REPO} label={t("githubLabel")} />
               </div>
             </Col>
           </Row>
@@ -166,7 +166,7 @@ export async function Work() {
                 <RepoLink href={ONEHOUSE_REPO} label={t("githubLabel")} />
               </div>
             </Col>
-            <Col span={12} md={3} mdStart={10}>
+            <Col span={12} md={3} mdStart={8}>
               <div className={styles.phoneFrame}>
                 <div className={styles.phone}>
                   <Image
