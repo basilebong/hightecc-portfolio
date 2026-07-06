@@ -2,7 +2,7 @@ const messages = {
   nav: {
     about: "01 · Über",
     approach: "02 · Arbeitsweise",
-    work: "03 · Referenz",
+    work: "03 · Kunden",
     what: "04 · Was",
     contact: "05 · Kontakt",
     cta: "Let's talk",
@@ -93,12 +93,18 @@ const messages = {
   },
   work: {
     section: {
-      name: "Referenz",
-      kicker: "Kundenprojekt",
-      title: "Ein Kunde über die <em>Zusammenarbeit.</em>",
+      name: "Kunden",
+      kicker: "Referenzen",
+      title: "Was Kund·innen <em>sagen.</em>",
+      lede: "Ausgewählte Projekte und die Menschen dahinter. Echte Zusammenarbeit, live gegangen.",
     },
+    badge: "Live · Kundenprojekt",
+    role: "Neue Homepage · Gebaut in Angular",
     quote:
-      "(Entwurf) Basile hat maßgeblich an unserer neuen Website mitgebaut und sie in Angular umgesetzt: klare Kommunikation, verlässliche Umsetzung, pünktlich geliefert.",
+      "Basile hat unsere neue Homepage in Angular umgesetzt: sauber, schnell und genau so, wie wir sie uns vorgestellt haben. Klare Kommunikation und pünktlich geliefert.",
+    attribName: "Timoor Taufig",
+    attribRole: "CEO · JoinMyTrip",
+    shotAlt: "JoinMyTrip Homepage",
   },
   capabilities: {
     section: {

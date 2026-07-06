@@ -4,7 +4,7 @@ const messages: MessageShape = {
   nav: {
     about: "01 · About",
     approach: "02 · Approach",
-    work: "03 · Reference",
+    work: "03 · Clients",
     what: "04 · What",
     contact: "05 · Contact",
     cta: "Let's talk",
@@ -95,12 +95,18 @@ const messages: MessageShape = {
   },
   work: {
     section: {
-      name: "Reference",
-      kicker: "Client work",
-      title: "A client on the <em>collaboration.</em>",
+      name: "Clients",
+      kicker: "References",
+      title: "What clients <em>say.</em>",
+      lede: "Selected projects and the people behind them. Real collaboration, shipped live.",
     },
+    badge: "Live · Client work",
+    role: "New homepage · Built in Angular",
     quote:
-      "(Draft) Basile was instrumental in building our new website and implemented it in Angular: clear communication, reliable delivery, shipped on time.",
+      "Basile implemented our new homepage in Angular: clean, fast, and exactly how we imagined it. Clear communication and delivered on time.",
+    attribName: "Timoor Taufig",
+    attribRole: "CEO · JoinMyTrip",
+    shotAlt: "JoinMyTrip homepage",
   },
   capabilities: {
     section: {
