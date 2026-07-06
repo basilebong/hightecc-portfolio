@@ -2,7 +2,7 @@ const messages = {
   nav: {
     about: "01 · Über",
     approach: "02 · Arbeitsweise",
-    work: "03 · Arbeit",
+    work: "03 · Referenz",
     what: "04 · Was",
     contact: "05 · Kontakt",
     cta: "Let's talk",
@@ -93,32 +93,12 @@ const messages = {
   },
   work: {
     section: {
-      name: "Arbeit",
-      kicker: "Fallstudien",
-      title: "Was ich <em>gebaut</em> habe.",
-      lede: "Eine Auswahl aus Kundenprojekten und eigenen Produkten. Manches ist live, manches entsteht gerade.",
+      name: "Referenz",
+      kicker: "Kundenprojekt",
+      title: "Ein Kunde über die <em>Zusammenarbeit.</em>",
     },
-    jmt: {
-      badge: "Live · Kundenprojekt",
-      role: "01 · In Angular umgesetzt",
-      desc: "Ich habe an der neuen JoinMyTrip-Website mitgebaut und sie in Angular umgesetzt, für eine Reise-Community mit 250.000+ Mitgliedern. Zieh den Regler, um Alt und Neu zu vergleichen.",
-      beforeLabel: "Vorher",
-      afterLabel: "Nachher",
-      beforeAlt: "JoinMyTrip, alte Seite",
-      afterAlt: "JoinMyTrip, neue Seite",
-      sliderLabel: "Vorher-Nachher-Vergleich",
-    },
-    xray: {
-      badge: "In Arbeit · Open Source",
-      desc: "Ein Open-Source-Tool, um Voice-AI-Agenten zu testen und zu verstehen. Spiele jedes Gespräch erneut ab, hör dir das Audio an und sieh genau, wo es rund lief und wo nicht.",
-      alt: "xray, Voice-Agent-Debugger",
-    },
-    onehouse: {
-      badge: "Coming Soon · Open Source",
-      desc: "Eine self-hosted Plattform für kleine, private Familien Apps: Eine mobile-first PWA, die zugleich MCP-Server ist, also nutzbar von Menschen und KI-Agenten wie Claude oder ChatGPT. Open Source, privacy-first, minimalistisch.",
-      alt: "OneHouse",
-    },
-    githubLabel: "GitHub-Repo",
+    quote:
+      "(Entwurf) Basile hat maßgeblich an unserer neuen Website mitgebaut und sie in Angular umgesetzt: klare Kommunikation, verlässliche Umsetzung, pünktlich geliefert.",
   },
   capabilities: {
     section: {
