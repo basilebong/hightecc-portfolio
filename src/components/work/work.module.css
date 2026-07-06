@@ -156,6 +156,7 @@
 .quote {
   position: relative;
   margin: 0;
+  padding-top: 40px;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
@@ -163,16 +164,15 @@
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--ink);
-  text-indent: 44px;
   text-wrap: pretty;
 }
 
 .quote::before {
   content: "\201C";
   position: absolute;
-  top: -0.16em;
-  left: -2px;
-  font-size: 2.6em;
+  top: -4px;
+  left: -4px;
+  font-size: 3.2em;
   line-height: 1;
   font-style: normal;
   color: var(--primary);
