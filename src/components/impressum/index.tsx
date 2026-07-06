@@ -59,6 +59,11 @@ export async function Impressum() {
               </dl>
 
               <dl className={styles.block}>
+                <dt>Wirtschafts-Identifikationsnummer</dt>
+                <dd>DE457457668-00001</dd>
+              </dl>
+
+              <dl className={styles.block}>
                 <dt>Berufshaftpflichtversicherung</dt>
                 <dd>
                   Markel Insurance SE
