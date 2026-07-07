@@ -1,7 +1,7 @@
 import type { BlogArticleContent } from "../types";
 
 export const en: BlogArticleContent = {
-  title: "How to add AI to your product without setting money on fire",
+  title: "The cheapest way to test an AI feature before you build it",
   description:
     "How JoinMyTrip added AI the disciplined way, and what any non-technical founder can copy: start tiny, measure one honest number, and decide the rules before you build.",
   kicker: "Case study · JoinMyTrip",

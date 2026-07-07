@@ -1,7 +1,7 @@
 import type { BlogArticleContent } from "../types";
 
 export const de: BlogArticleContent = {
-  title: "Wie du KI in dein Produkt bringst, ohne Geld zu verbrennen",
+  title: "Der günstigste Weg, ein KI-Feature zu testen, bevor Du es baust",
   description:
     "Wie JoinMyTrip KI mit Verstand eingeführt hat, und was jede nicht-technische Gründerin davon kopieren kann: klein anfangen, eine ehrliche Zahl messen, die Regeln vorher festlegen.",
   kicker: "Case Study · JoinMyTrip",
