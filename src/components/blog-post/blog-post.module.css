@@ -3,11 +3,6 @@
   border-top: 1px solid var(--line);
 }
 
-.column {
-  max-width: 720px;
-  margin-inline: auto;
-}
-
 .back {
   display: inline-flex;
   align-items: center;
