@@ -13,5 +13,6 @@ export const site = {
     { key: "work", href: "/#work" },
     { key: "what", href: "/#what" },
     { key: "contact", href: "/#contact" },
+    { key: "blog", href: "/blog" },
   ],
 } as const;

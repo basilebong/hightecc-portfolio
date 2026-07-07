@@ -6,6 +6,7 @@ const messages: MessageShape = {
     work: "02 · Work",
     what: "03 · What",
     contact: "04 · Contact",
+    blog: "Blog",
     cta: "Let's talk",
     menu: "Menu",
   },
@@ -18,6 +19,11 @@ const messages: MessageShape = {
     impressum: {
       title: "Legal notice · Hightecc",
       description: "Legal notice and provider information pursuant to § 5 DDG.",
+    },
+    blog: {
+      title: "Blog · Hightecc · Basile Bong",
+      description:
+        "Stories and lessons on AI, product strategy, and building digital products. For non-technical founders and business people.",
     },
   },
   hero: {
@@ -154,9 +160,31 @@ const messages: MessageShape = {
     preface:
       "Legal notice required by German law. The original German text follows below and is the legally binding version.",
   },
+  blog: {
+    index: {
+      kicker: "Notes from the field",
+      title: "Field notes from <em>building products.</em>",
+      lede: "Long-form thinking on AI, product strategy, and shipping. Written for founders and business people, not for engineers.",
+    },
+    card: {
+      readMore: "Read article",
+    },
+    meta: {
+      readingSuffix: "min read",
+    },
+    post: {
+      backToList: "All articles",
+      cta: {
+        heading: "Tell me about <em>your project.</em>",
+        body: "Clear communication, smart planning, delivered on time. If you're building something, let's talk.",
+        button: "Discuss a project",
+      },
+    },
+  },
   footer: {
     pitch: "No cookies. No tracking. No banners. Just the page you asked for.",
     brandSuffix: "· Basile Bong · Cologne, DE",
+    blog: "Blog",
     impressum: "Legal notice",
     version: "v2026.1",
     buildTag: "Built with care",

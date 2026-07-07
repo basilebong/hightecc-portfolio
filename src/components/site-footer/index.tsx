@@ -18,7 +18,8 @@ export async function SiteFooter() {
             <span>{t("brandSuffix")}</span>
           </div>
           <div>
-            © 2026 · <Link href="/impressum">{t("impressum")}</Link>
+            © 2026 · <Link href="/blog">{t("blog")}</Link> ·{" "}
+            <Link href="/impressum">{t("impressum")}</Link>
           </div>
           <div>
             {t("version")} · {t("buildTag")}

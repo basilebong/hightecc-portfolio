@@ -143,7 +143,7 @@ function renderOgImage(title: string, description: string, assets: Assets) {
   );
 }
 
-type MetadataNamespace = "metadata.home" | "metadata.impressum";
+type MetadataNamespace = "metadata.home" | "metadata.impressum" | "metadata.blog";
 
 export function createOgImageHandler({ namespace }: { namespace: MetadataNamespace }) {
   return async function OgImage({ params }: { params: Promise<{ lang: string }> }) {
@@ -155,4 +155,9 @@ export function createOgImageHandler({ namespace }: { namespace: MetadataNamespa
     ]);
     return renderOgImage(meta("title"), meta("description"), assets);
   };
+}
+
+export async function ogImageResponse(title: string, description: string) {
+  const assets = await getAssets();
+  return renderOgImage(title, description, assets);
 }

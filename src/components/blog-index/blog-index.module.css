@@ -1,0 +1,159 @@
+.tag {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+}
+
+.name {
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.title {
+  margin: 0;
+  max-width: 900px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary);
+}
+
+.lede {
+  margin: 20px 0 0;
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--mute);
+}
+
+.listWrap {
+  margin-top: 80px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 32px;
+  align-items: start;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.cardMain {
+  min-width: 0;
+}
+
+.cardTitle {
+  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.12;
+  color: var(--ink);
+  text-wrap: pretty;
+  transition: color 0.15s;
+}
+
+.card:hover .cardTitle {
+  color: var(--primary);
+}
+
+.cardDesc {
+  margin: 0 0 16px;
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mute);
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cardCta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  transition: color 0.15s;
+}
+
+.card:hover .cardCta {
+  color: var(--ink);
+}
+
+.cardCta svg {
+  transition: transform 0.15s;
+}
+
+.card:hover .cardCta svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 720px) {
+  .listWrap {
+    margin-top: 48px;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 28px 0;
+  }
+
+  .cardMeta {
+    flex-direction: row;
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .cardCta {
+    padding-top: 0;
+  }
+}

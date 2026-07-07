@@ -20,6 +20,7 @@ export async function SiteHeader() {
   // i18n-check t("work")
   // i18n-check t("what")
   // i18n-check t("contact")
+  // i18n-check t("blog")
   const navItems = site.nav.map((item) => ({ href: item.href, label: t(item.key) }));
 
   return (

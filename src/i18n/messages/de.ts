@@ -4,6 +4,7 @@ const messages = {
     work: "02 · Arbeit",
     what: "03 · Was",
     contact: "04 · Kontakt",
+    blog: "Blog",
     cta: "Let's talk",
     menu: "Menü",
   },
@@ -16,6 +17,11 @@ const messages = {
     impressum: {
       title: "Impressum · Hightecc",
       description: "Impressum und Anbieterkennzeichnung gemäß § 5 DDG.",
+    },
+    blog: {
+      title: "Blog · Hightecc · Basile Bong",
+      description:
+        "Storys und Lektionen zu KI, Produktstrategie und dem Bauen digitaler Produkte. Für nicht-technische Gründer·innen und Entscheider·innen.",
     },
   },
   hero: {
@@ -151,9 +157,31 @@ const messages = {
     },
     preface: "",
   },
+  blog: {
+    index: {
+      kicker: "Notizen aus der Praxis",
+      title: "Feldnotizen aus der <em>Produktentwicklung.</em>",
+      lede: "Ausführliche Gedanken zu KI, Produktstrategie und dem Ausliefern. Geschrieben für Gründer·innen und Business, nicht für Entwickler·innen.",
+    },
+    card: {
+      readMore: "Artikel lesen",
+    },
+    meta: {
+      readingSuffix: "Min. Lesezeit",
+    },
+    post: {
+      backToList: "Alle Artikel",
+      cta: {
+        heading: "Erzähl mir von <em>Deinem Projekt.</em>",
+        body: "Klare Kommunikation, kluge Planung, pünktlich geliefert. Wenn Du etwas baust, lass uns reden.",
+        button: "Projekt besprechen",
+      },
+    },
+  },
   footer: {
     pitch: "Keine Cookies. Kein Tracking. Keine Banner. Nur die Seite, die du angefordert hast.",
     brandSuffix: "· Basile Bong · Köln, DE",
+    blog: "Blog",
     impressum: "Impressum",
     version: "v2026.1",
     buildTag: "Built with care",
