@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { Col, Container, Row } from "@/components/ui/grid";
+import { site } from "@/lib/site";
 
 import { SectionHead } from "../section-head";
 import styles from "./impressum.module.css";
@@ -8,6 +9,7 @@ import styles from "./impressum.module.css";
 export async function Impressum() {
   const t = await getTranslations("impressum");
   const preface = t("preface");
+  const { provider } = site.legal;
 
   return (
     <section id="impressum">
@@ -29,15 +31,15 @@ export async function Impressum() {
               <dl className={styles.block}>
                 <dt>Diensteanbieter</dt>
                 <dd>
-                  Basile Bong
+                  {provider.name}
                   <br />
-                  Hightecc (Einzelunternehmen, Kleinunternehmer i. S. d. § 19 UStG)
+                  {provider.tradeName} ({provider.legalForm})
                   <br />
-                  Spechtstr. 3
+                  {provider.street}
                   <br />
-                  50735 Köln
+                  {provider.postalCode} {provider.city}
                   <br />
-                  Deutschland
+                  {provider.country}
                 </dd>
               </dl>
 
@@ -79,25 +81,9 @@ export async function Impressum() {
               <dl className={styles.block}>
                 <dt>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</dt>
                 <dd>
-                  Basile Bong
+                  {provider.name}
                   <br />
-                  Spechtstr. 3, 50735 Köln, Deutschland
-                </dd>
-              </dl>
-
-              <dl className={styles.block}>
-                <dt>EU-Streitschlichtung</dt>
-                <dd>
-                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
-                  bereit:{" "}
-                  <a
-                    href="https://ec.europa.eu/consumers/odr/"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    ec.europa.eu/consumers/odr
-                  </a>
-                  .
+                  {provider.street}, {provider.postalCode} {provider.city}, {provider.country}
                 </dd>
               </dl>
 
@@ -112,15 +98,11 @@ export async function Impressum() {
               <dl className={styles.block}>
                 <dt>Haftung für Inhalte</dt>
                 <dd>
-                  Als Diensteanbieter bin ich gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen
-                  Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG bin ich
-                  als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte
-                  fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
-                  rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung
-                  der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon
-                  unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
-                  Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden
-                  entsprechender Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.
+                  Als Diensteanbieter bin ich für die eigenen Inhalte auf diesen Seiten nach den
+                  allgemeinen Gesetzen verantwortlich. Fremde Informationen Dritter werden auf
+                  dieser Website weder gespeichert noch übermittelt. Eine Haftung ist erst ab dem
+                  Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Sobald mir eine
+                  solche bekannt wird, entferne ich den betreffenden Inhalt umgehend.
                 </dd>
               </dl>
 
