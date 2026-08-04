@@ -19,6 +19,10 @@ const messages: MessageShape = {
       title: "Legal notice · Hightecc",
       description: "Legal notice and provider information pursuant to § 5 DDG.",
     },
+    datenschutz: {
+      title: "Privacy · Hightecc",
+      description: "Privacy notice pursuant to Art. 13 GDPR.",
+    },
   },
   hero: {
     meta: {
@@ -154,10 +158,20 @@ const messages: MessageShape = {
     preface:
       "Legal notice required by German law. The original German text follows below and is the legally binding version.",
   },
+  datenschutz: {
+    section: {
+      name: "Privacy",
+      kicker: "Information pursuant to Art. 13 GDPR",
+      title: "How I handle <em>your data</em>.",
+    },
+    preface:
+      "Privacy notice required by German law. The original German text follows below and is the legally binding version.",
+  },
   footer: {
     pitch: "No cookies. No tracking. No banners. Just the page you asked for.",
     brandSuffix: "· Basile Bong · Cologne, DE",
     impressum: "Legal notice",
+    datenschutz: "Privacy",
     version: "v2026.1",
     buildTag: "Built with care",
   },

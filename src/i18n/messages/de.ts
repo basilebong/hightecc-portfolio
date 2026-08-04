@@ -17,6 +17,10 @@ const messages = {
       title: "Impressum · Hightecc",
       description: "Impressum und Anbieterkennzeichnung gemäß § 5 DDG.",
     },
+    datenschutz: {
+      title: "Datenschutz · Hightecc",
+      description: "Datenschutzerklärung nach Art. 13 DSGVO.",
+    },
   },
   hero: {
     meta: {
@@ -151,10 +155,19 @@ const messages = {
     },
     preface: "",
   },
+  datenschutz: {
+    section: {
+      name: "Datenschutz",
+      kicker: "Angaben nach Art. 13 DSGVO",
+      title: "Wie ich mit <em>Daten</em> umgehe.",
+    },
+    preface: "",
+  },
   footer: {
     pitch: "Keine Cookies. Kein Tracking. Keine Banner. Nur die Seite, die du angefordert hast.",
     brandSuffix: "· Basile Bong · Köln, DE",
     impressum: "Impressum",
+    datenschutz: "Datenschutz",
     version: "v2026.1",
     buildTag: "Built with care",
   },

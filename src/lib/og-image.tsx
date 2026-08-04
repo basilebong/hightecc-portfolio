@@ -143,7 +143,7 @@ function renderOgImage(title: string, description: string, assets: Assets) {
   );
 }
 
-type MetadataNamespace = "metadata.home" | "metadata.impressum";
+type MetadataNamespace = "metadata.home" | "metadata.impressum" | "metadata.datenschutz";
 
 export function createOgImageHandler({ namespace }: { namespace: MetadataNamespace }) {
   return async function OgImage({ params }: { params: Promise<{ lang: string }> }) {
