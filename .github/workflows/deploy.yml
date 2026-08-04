@@ -47,7 +47,7 @@ jobs:
       contents: read
       packages: write
     outputs:
-      image: ${{ steps.meta.outputs.tags }}
+      image: ${{ steps.image.outputs.ref }}
       digest: ${{ steps.push.outputs.digest }}
     steps:
       - uses: actions/checkout@v5
@@ -82,6 +82,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      # docker/metadata-action lowercases the image name it pushes, so the
+      # deploy job must not rebuild the reference from ${{ github.repository }}.
+      - name: Resolve pushed image reference
+        id: image
+        env:
+          IMAGE_REF: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+        run: echo "ref=${IMAGE_REF,,}" >> "$GITHUB_OUTPUT"
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -92,25 +100,39 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
       - name: Ship compose.yaml
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
           scp -i ~/.ssh/id_ed25519 \
             deploy/compose.yaml \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/opt/hightecc/hightecc-website-26/compose.yaml
+            "${DEPLOY_USER}@${DEPLOY_HOST}:/opt/hightecc/hightecc-website-26/compose.yaml"
 
       - name: Deploy
         env:
-          IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          IMAGE: ${{ needs.build.outputs.image }}
+          EXPECTED_IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
+          if [[ "$IMAGE" != "${EXPECTED_IMAGE,,}" ]] \
+            || ! [[ "$IMAGE" =~ ^ghcr\.io/[a-z0-9._/-]+:sha-[0-9a-f]{40}$ ]]; then
+            echo "refusing unexpected image reference: $IMAGE" >&2
+            exit 1
+          fi
           ssh -i ~/.ssh/id_ed25519 \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "${DEPLOY_USER}@${DEPLOY_HOST}" \
             IMAGE="$IMAGE" bash -s <<'REMOTE'
           set -euo pipefail
           cd /opt/hightecc/hightecc-website-26

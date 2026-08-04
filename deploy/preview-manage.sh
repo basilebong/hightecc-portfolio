@@ -41,7 +41,7 @@ up() {
     trap 'rm -f "$CADDY_SNIPPET"' ERR
 
     # Lock image to our own GHCR namespace so a malicious env can't pull arbitrary images.
-    local expected_prefix="ghcr.io/basilebong/hightecc-portfolio:"
+    local expected_prefix="ghcr.io/hightecc/hightecc-portfolio:"
     if [[ "$IMAGE" != "${expected_prefix}"* ]]; then
         echo "refusing IMAGE outside ${expected_prefix}* : ${IMAGE}" >&2
         exit 2

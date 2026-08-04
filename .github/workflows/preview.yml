@@ -136,6 +136,7 @@ jobs:
             echo "PR_NUMBER must be 1-99999, got: $PR_NUMBER" >&2
             exit 1
           fi
+          IMAGE="${IMAGE,,}"
           ssh -i ~/.ssh/id_ed25519 \
             "${DEPLOY_USER}@${DEPLOY_HOST}" \
             "PR_NUMBER='${PR_NUMBER}' IMAGE='${IMAGE}' /opt/hightecc/preview/hightecc-website-26/preview-manage.sh up"
